@@ -7,12 +7,15 @@
   'use strict';
 
   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "quizBase": "",
+    "quizBase": "https://lebstein.github.io/Cyberslueth/quiz.html",
     "timerSeconds": 30
   }/*EDITMODE-END*/;
   window.CYBER_TWEAKS = { ...TWEAK_DEFAULTS };
 
   const live = window.SleuthLive;
+  // Presenter-popup thumbnail instances (?_snthumb=...#N) render the deck at
+  // other slides — they must NEVER publish state or run timers.
+  const IS_THUMB = /[?&]_snthumb=/.test(location.search);
 
   // ---- Session code (persists across presenter reloads) ----
   function newCode() {
@@ -80,7 +83,7 @@
 
   // ---- Publish presenter state ----
   function publish(state) {
-    if (!live.configured) return;
+    if (!live.configured || IS_THUMB) return;
     live.ref(SESSION, 'state').set(state);
   }
 
@@ -100,9 +103,12 @@
   }
   function startSlideTimer(section) {
     stopTimer();
+    if (IS_THUMB) return;
     const rings = section.querySelectorAll('.timer-ring[data-timer]');
     if (!rings.length) return;
-    const total = window.CYBER_TWEAKS.timerSeconds || 30;
+    const total = section.hasAttribute('data-quiz')
+      ? (window.CYBER_TWEAKS.timerSeconds || 30)
+      : (Number(rings[0].getAttribute('data-timer')) || 30);
     let remaining = total;
     rings.forEach(r => setRingProgress(r, remaining, total));
     timerInterval = setInterval(() => {
@@ -222,6 +228,7 @@
 
     if (section.querySelector('#join-qr')) {
       publish({ phase: 'lobby' });
+      startSlideTimer(section);
     } else if (qNum) {
       publish({ phase: 'question', q: Number(qNum), startedAt: live.configured ? live.TS() : Date.now(), duration: window.CYBER_TWEAKS.timerSeconds || 30 });
       startSlideTimer(section);
@@ -262,7 +269,7 @@
 
   // ---- Offline badge ----
   function offlineBadge() {
-    if (live.configured) return;
+    if (live.configured || IS_THUMB) return;
     const b = document.createElement('div');
     b.textContent = '⚠ LIVE DATA OFFLINE — paste your Firebase config into firebase-config.js (see README)';
     b.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:9999;background:#c2362d;color:#fff;font:600 13px Poppins,sans-serif;padding:8px 16px;border-radius:999px;letter-spacing:0.02em;box-shadow:0 8px 24px rgba(0,0,0,0.35);';
@@ -277,7 +284,7 @@
     });
     renderQRCodes();
     offlineBadge();
-    subscribe();
+    if (!IS_THUMB) subscribe();
     renderPlayerCount();
     const stage = document.querySelector('deck-stage');
     onSlideChange((stage && stage.currentIndex) || 0);
