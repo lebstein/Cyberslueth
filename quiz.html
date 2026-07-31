@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Cyber Sleuth Challenge — Live Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#000000;--ink-2:#1a1814;--paper:#f7f5ee;--gold:#deac27;--gold-deep:#a8801f;--teal:#358fb2;--teal-soft:rgba(53,143,178,0.16);--danger:#c2362d;--safe:#3f7a2e;--muted:#6b6760;--font:'Poppins','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--ink);color:var(--paper);font-family:var(--font);min-height:100dvh;overflow-x:hidden}
+body{padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+a{color:var(--teal)}a:hover{color:#5fb0d0}
+.app{max-width:560px;margin:0 auto;padding:20px 20px 80px;min-height:100dvh;display:flex;flex-direction:column;gap:18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(247,245,238,0.08)}
+.topbar img{height:34px;width:auto;display:block}
+.gradline{height:3px;border-radius:2px;background:linear-gradient(90deg,#000 0%,#1f5d8c 28%,#3aa7b8 52%,#82b35c 76%,#deac27 100%)}
+.progress-pill{font-size:12px;font-weight:600;color:var(--gold);background:rgba(222,172,39,0.12);border:1px solid rgba(222,172,39,0.3);padding:4px 12px;border-radius:999px;letter-spacing:0.08em}
+h1,h2,h3{font-weight:600;margin:0;line-height:1.15}
+.eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.muted{color:rgba(247,245,238,0.7);font-size:14px;line-height:1.5}
+.btn{appearance:none;border:0;border-radius:14px;padding:16px 22px;font-family:var(--font);font-size:17px;font-weight:600;cursor:pointer;transition:transform .1s ease;width:100%;text-align:center}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:disabled{background:rgba(53,143,178,0.3);color:rgba(255,255,255,0.5);cursor:not-allowed}
+.btn-ghost{background:transparent;border:1px solid rgba(247,245,238,0.2);color:var(--paper)}
+.card{background:rgba(247,245,238,0.04);border:1px solid rgba(247,245,238,0.08);border-radius:18px;padding:20px}
+.nick-input{width:100%;background:rgba(247,245,238,0.06);border:1.5px solid rgba(247,245,238,0.14);border-radius:14px;padding:16px 18px;color:var(--paper);font-family:var(--font);font-size:18px;font-weight:500;outline:none;transition:border-color .15s ease}
+.nick-input:focus{border-color:var(--teal)}
+.nick-input::placeholder{color:rgba(247,245,238,0.4)}
+.q-title{font-size:21px;font-weight:600;color:var(--paper);line-height:1.3}
+.options{display:flex;flex-direction:column;gap:12px}
+.option{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:14px;background:rgba(247,245,238,0.04);border:1.5px solid rgba(247,245,238,0.14);border-radius:14px;padding:14px 18px;font-size:16px;line-height:1.4;color:var(--paper);cursor:pointer;transition:all .15s ease;text-align:left;font-family:var(--font);width:100%}
+.option:active{transform:scale(0.99)}
+.option .letter{width:32px;height:32px;border-radius:50%;background:rgba(247,245,238,0.08);color:var(--paper);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.option.selected{background:var(--teal-soft);border-color:var(--teal)}
+.option.selected .letter{background:var(--teal);color:#fff}
+.option.correct{background:rgba(63,122,46,0.16);border-color:var(--safe)}
+.option.correct .letter{background:var(--safe);color:#fff}
+.option.wrong{background:rgba(194,54,45,0.16);border-color:var(--danger)}
+.option.wrong .letter{background:var(--danger);color:#fff}
+.email{background:#fff;color:var(--ink-2);border-radius:12px;overflow:hidden}
+.email .em-h{padding:10px 14px;background:#f3f1ec;font-size:12px;color:var(--muted);border-bottom:1px solid rgba(11,10,8,0.06)}
+.email .em-subject{padding:14px 16px 4px;font-size:16px;font-weight:600;color:#000}
+.email .em-meta{padding:0 16px 12px;font-size:11px;color:var(--muted);line-height:1.5}
+.email .em-body{padding:12px 16px 16px;font-size:13px;line-height:1.5;border-top:1px solid rgba(11,10,8,0.06)}
+.email .em-body a{color:#1f5d8c;text-decoration:underline}
+.sms{background:#f0eee5;color:#000;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.sms .stamp{text-align:center;font-size:11px;color:var(--muted)}
+.sms .bubble{background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;line-height:1.5}
+.urls{display:flex;flex-direction:column;gap:8px;font-size:13px}
+.urls .url-row{background:#fff;color:#000;padding:10px 14px;border-radius:8px;display:grid;grid-template-columns:22px 1fr;gap:10px;word-break:break-all;font-family:ui-monospace,Menlo,monospace}
+.urls .url-row .letter{background:#000;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;font-family:var(--font)}
+.timer-bar{height:6px;background:rgba(247,245,238,0.1);border-radius:3px;overflow:hidden;position:relative}
+.timer-bar > .fill{position:absolute;inset:0 auto 0 0;background:var(--teal);transition:width .95s linear}
+.timer-bar.warn > .fill{background:var(--danger)}
+.timer-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:rgba(247,245,238,0.7)}
+.timer-row .secs{color:var(--gold);font-weight:700;font-size:18px}
+.timer-row .secs.warn{color:var(--danger)}
+.feedback{border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.feedback.win{background:rgba(63,122,46,0.18);border:1px solid rgba(63,122,46,0.4)}
+.feedback.loss{background:rgba(194,54,45,0.18);border:1px solid rgba(194,54,45,0.4)}
+.feedback .title{font-size:22px;font-weight:600}
+.feedback.win .title{color:#aed391}
+.feedback.loss .title{color:#f0a39d}
+.score-hero{background:linear-gradient(160deg,#1a1610 0%,#000 100%);border:1px solid rgba(222,172,39,0.3);border-radius:22px;padding:36px 24px;text-align:center;display:flex;flex-direction:column;gap:12px}
+.score-hero .score{font-size:96px;font-weight:700;line-height:1;color:var(--gold)}
+.score-hero .out-of{color:rgba(247,245,238,0.55);font-size:14px;letter-spacing:0.15em;font-weight:600}
+.score-hero .verdict{font-size:22px;margin-top:8px;font-weight:600}
+.chip{font-size:11px;font-weight:600;padding:4px 10px;background:rgba(222,172,39,0.12);border:1px solid rgba(222,172,39,0.3);color:var(--gold);border-radius:999px;letter-spacing:0.04em}
+.chip.bad{background:rgba(194,54,45,0.14);border-color:rgba(194,54,45,0.3);color:#f0a39d}
+.chip.good{background:rgba(63,122,46,0.14);border-color:rgba(63,122,46,0.3);color:#aed391}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);animation:pulse 1.4s ease-in-out infinite}
+.podium-row{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(247,245,238,0.06)}
+.podium-row:last-child{border-bottom:0}
+.podium-row .medal{font-size:20px;text-align:center}
+.podium-row .pname{font-size:16px;font-weight:600}
+.podium-row .pscore{color:var(--gold);font-weight:700}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeIn .25s ease-out both}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="live.js"></script>
+<script>
+// ============== Quiz data (order must match the deck) ==============
+const QUESTIONS = [
+  { n:1, title:"Spot the phish — what should you do?",
+    body:`<div class="email"><div class="em-h">Inbox · 1 message</div><div class="em-subject">⚠ URGENT — Patient Records Verification REQUIRED</div><div class="em-meta">From: dentaicare-billing@securemail-portal.co<br/>Today · 4:51 AM</div><div class="em-body">Hello Esteemed Dental Office,<br/><br/>You're patient records system require an immediate verification or your account WILL be suspend within 24 hours.<br/><br/><a href="#">→ Verify account now</a> &nbsp;·&nbsp; <a href="#">→ Click here if button broken</a><br/><br/>Sincerely,<br/>DentaIcare Security Team</div></div>`,
+    options:[{letter:'A',text:'Click the verify link before access is suspended'},{letter:'B',text:'Forward it to a coworker to double-check'},{letter:'C',text:"Don't click — verify with the sender directly"},{letter:'D',text:'Reply asking who they are'}],
+    correct:'C', explain:"Verify first. Spoofed brand (\"DentaIcare\" with a capital I), strange domain, 4 AM send, grammar errors, urgent suspension threat — five red flags." },
+  { n:2, title:"Which email is trustworthy?",
+    body:`<div style="display:flex;flex-direction:column;gap:12px;"><div class="email"><div class="em-h">Email A</div><div class="em-subject">Need a quick favor — don't call</div><div class="em-meta">From: drrey.office@gmail.com</div><div class="em-body">Hi — are you at your desk? I need you to grab <b>5 × $200 Apple gift cards</b> for a patient gift, can't talk right now. Send me the codes — I'll reimburse. — Dr. R</div></div><div class="email"><div class="em-h">Email B</div><div class="em-subject">Order #DS-22841 confirmation — Henry Schein</div><div class="em-meta">From: orders@henryschein.com</div><div class="em-body">Hi Lauren — order DS-22841 ships Thursday from Sparks, NV. Tracking will follow. Reply or call Mark at 800-372-XXXX.</div></div></div>`,
+    options:[{letter:'A',text:'Email A'},{letter:'B',text:'Email B'},{letter:'C',text:'Both'},{letter:'D',text:'Neither'}],
+    correct:'B', explain:"B is consistent and expected. A is the classic CEO gift-card spoof — personal @gmail, urgency, secrecy." },
+  { n:3, title:"RE: in the subject — what's your move?",
+    body:`<div class="email"><div class="em-h">1 attachment</div><div class="em-subject">RE: Q4 benefits review — please confirm</div><div class="em-meta">From: benefits.team@hr-portal-secure.com<br/>📎 BenefitsReview_Q4.pdf</div><div class="em-body">Following up on our last message — please <a href="#">review the attached document</a> and confirm by EOD.<br/><br/>If you have trouble opening it, you may need to <a href="#">install the updated PDF viewer</a>.<br/><br/>Thanks,<br/>HR Benefits Team</div></div>`,
+    options:[{letter:'A',text:'Open the PDF attachment'},{letter:'B',text:'Click to install the PDF viewer'},{letter:'C',text:'Verify directly with the sender first'},{letter:'D',text:"Reply to the email asking what it's about"}],
+    correct:'C', explain:"Verify out-of-band. \"RE:\" you never sent, unfamiliar domain, surprise attachment, asks you to install software — all red flags." },
+  { n:4, title:"Which URLs are safe?",
+    body:`<div class="urls"><div class="url-row"><span class="letter">A</span><span>https://www.opendental.com/login</span></div><div class="url-row"><span class="letter">B</span><span>http://opendental-Iogin.com/account</span></div><div class="url-row"><span class="letter">C</span><span>https://opendental.support-help.net/billing</span></div><div class="url-row"><span class="letter">D</span><span>https://www.amaz0n.com/dental-supplies</span></div></div>`,
+    options:[{letter:'A',text:'Only A is suspicious'},{letter:'B',text:'Only A is safe; B, C, D are traps'},{letter:'C',text:'All look fine'},{letter:'D',text:'All are suspicious'}],
+    correct:'B', explain:"B uses a capital I for L. C uses a fake subdomain. D swaps O for zero. Hover before you click — characters can lie." },
+  { n:5, title:'You search "Open Dental login". Which result is the trap?',
+    body:`<div style="display:flex;flex-direction:column;gap:10px;"><div style="background:#fff;color:#1a1814;padding:14px;border-radius:10px;"><div style="display:flex;gap:8px;align-items:center;"><span class="chip good" style="background:#e8f1de;color:#3f7a2e;border-color:transparent;">A</span><span style="font-size:11px;color:#3f7a2e;">www.opendental.com › login</span></div><div style="font-weight:600;color:#1f5d8c;font-size:16px;margin-top:4px;">Open Dental — Login</div><div style="font-size:12px;color:#6b6760;margin-top:4px;">Trusted by 80,000+ dental professionals…</div></div><div style="background:#fff;color:#1a1814;padding:14px;border-radius:10px;"><div style="display:flex;gap:8px;align-items:center;"><span class="chip bad" style="background:#fbe9e6;color:#c2362d;border-color:transparent;">B</span><span style="background:#f0eee5;font-size:10px;padding:1px 6px;border-radius:3px;color:#6b6760;font-weight:600;">Ad</span><span style="font-size:11px;color:#1a1814;">opendental-login-help.com</span></div><div style="font-weight:600;color:#1f5d8c;font-size:16px;margin-top:4px;">Open Dental Login — Get Help Fast</div><div style="font-size:12px;color:#6b6760;margin-top:4px;">Fast sign-in support. Reset password, recover account…</div></div></div>`,
+    options:[{letter:'A',text:'Result A'},{letter:'B',text:'Result B'},{letter:'C',text:'Both are traps'},{letter:'D',text:'Neither — both are fine'}],
+    correct:'B', explain:"B is a paid ad on a spoof domain. Attackers buy ad slots for popular dental software. Bookmark known URLs." },
+  { n:6, title:"Scam text or legit message?",
+    body:`<div class="sms"><div class="stamp">Today · 10:42 AM · +1 (702) 555-0188</div><div class="bubble">Hi, is this Juliana Roth?</div><div class="bubble">This is Brad Barton from Metro Presort Inc. We have an urgent matter — can we talk on the phone today?</div><div class="bubble">Please reply ASAP. Time-sensitive.</div></div>`,
+    options:[{letter:'A',text:'Reply yes — it sounds important'},{letter:'B',text:'Call the number to find out who it is'},{letter:'C',text:'Verify the person through a known channel'},{letter:'D',text:'Block, delete, move on'}],
+    correct:'C', explain:"Smishing. Unknown sender, unknown company, urgency, wants you to engage. Verify Juliana / Brad through a channel you trust." }
+];
+
+// ============== Live client ==============
+const live = window.SleuthLive;
+const app = document.getElementById('app');
+const LS = 'cyber-sleuth-live-v1';
+
+let local = load() || { pid:null, name:'', session:'', answers:{} }; // answers: q -> {letter, ms, locked}
+const urlCode = new URLSearchParams(location.search).get('s');
+if (urlCode) { local.session = urlCode.toUpperCase(); save(); }
+if (!local.pid) { local.pid = 'p' + Math.random().toString(36).slice(2, 10); save(); }
+
+let remote = null;       // last state from Firebase
+let joined = !!(local.name && local.session);
+let timerInterval = null;
+let questionStart = 0;   // client ms when current question opened (for ms scoring)
+
+function load(){ try { return JSON.parse(localStorage.getItem(LS)); } catch(e){ return null; } }
+function save(){ try { localStorage.setItem(LS, JSON.stringify(local)); } catch(e){} }
+
+function topBar(pill){
+  return `<div class="topbar"><img src="https://www.pact-one.com/wp-content/uploads/2024/02/Logo-w.png" alt="Pact-One" onerror="this.outerHTML='<b style=\\'font-size:17px\\'>Pact-One</b>'"/>${pill ? `<div class="progress-pill">${pill}</div>` : ''}</div><div class="gradline"></div>`;
+}
+function clearTimer(){ if (timerInterval){ clearInterval(timerInterval); timerInterval = null; } }
+
+function myScore(){
+  let s = 0;
+  QUESTIONS.forEach(q => { const a = local.answers[q.n]; if (a && a.letter === q.correct) s += 1; });
+  return s;
+}
+
+// ---- Screens ----
+function renderConfigMissing(){
+  app.innerHTML = `${topBar('SETUP')}
+    <div class="fade-in card" style="margin-top:8px;">
+      <div class="eyebrow" style="margin-bottom:10px;">Almost there</div>
+      <div style="font-size:15px;line-height:1.6;color:rgba(247,245,238,0.85);">This quiz needs its live connection configured. Paste your Firebase config into <b>firebase-config.js</b> and redeploy — see README.md in the repo.</div>
+    </div>`;
+}
+
+function renderJoin(){
+  clearTimer();
+  app.innerHTML = `${topBar('JOIN')}
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:20px;">
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px;">
+        <div class="eyebrow">Pact-One Training</div>
+        <h1 style="font-size:34px;">Cyber Sleuth<br/><span style="color:var(--gold);">Challenge.</span></h1>
+        <p class="muted">Six real-world phishing scenarios, played live with your presenter. Answer on your phone — results show on the big screen.</p>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:14px;">
+        <div><label class="eyebrow" for="nick" style="display:block;margin-bottom:8px;">Pick a nickname</label>
+        <input class="nick-input" id="nick" type="text" maxlength="20" placeholder="e.g. Sarah K." autocomplete="off" value="${local.name || ''}" /></div>
+        <div><label class="eyebrow" for="code" style="display:block;margin-bottom:8px;">Session code</label>
+        <input class="nick-input" id="code" type="text" maxlength="4" placeholder="e.g. K7XP" autocomplete="off" style="text-transform:uppercase;letter-spacing:0.2em;" value="${local.session || ''}" /></div>
+      </div>
+      <button class="btn btn-primary" id="join-btn">Join the challenge →</button>
+      <p class="muted" style="font-size:12px;text-align:center;">Just a nickname — no accounts, no personal info.</p>
+    </div>`;
+  const nick = document.getElementById('nick');
+  const code = document.getElementById('code');
+  const btn = document.getElementById('join-btn');
+  btn.addEventListener('click', () => {
+    const name = nick.value.trim();
+    const c = code.value.trim().toUpperCase();
+    if (!name || c.length !== 4) { btn.textContent = !name ? 'Enter a nickname first' : 'Enter the 4-letter code on screen'; return; }
+    local.name = name; local.session = c; save();
+    live.ref(local.session, 'players/' + local.pid).set({ name: name, joined: live.TS() });
+    joined = true;
+    listen();
+    renderFromState();
+  });
+  [nick, code].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter') btn.click(); }));
+}
+
+function renderLobby(){
+  clearTimer();
+  app.innerHTML = `${topBar(local.session)}
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:20px;align-items:center;text-align:center;margin-top:40px;">
+      <div class="pulse-dot"></div>
+      <h2 style="font-size:26px;">You're in, ${local.name}.</h2>
+      <p class="muted" style="max-width:320px;">Eyes on the big screen — the first question drops when your presenter starts the round.</p>
+      <div class="card" style="width:100%;"><div class="eyebrow" style="margin-bottom:8px;">While you wait</div>
+      <div style="font-size:14px;line-height:1.6;color:rgba(247,245,238,0.85);">6 questions · 30 seconds each · answer fast, correct answers win. Top 3 make the podium.</div></div>
+    </div>`;
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[(remote.q || 1) - 1];
+  if (!q) return renderLobby();
+  const dur = (remote.duration || 30) * 1000;
+  const deadline = (remote.startedAt || live.now()) + dur;
+  const mine = local.answers[q.n];
+  if (!mine || mine.q !== q.n) questionStart = Date.now();
+
+  app.innerHTML = `${topBar('Q ' + q.n + ' / 6')}
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:16px;">
+      <div class="timer-row"><span>Time remaining</span><span class="secs" id="secs">–</span></div>
+      <div class="timer-bar" id="tbar"><div class="fill" id="tfill" style="width:100%;"></div></div>
+      <h2 class="q-title">${q.title}</h2>
+      <div>${q.body}</div>
+      <div class="options" id="opts">
+        ${q.options.map(o => `<button class="option${mine && mine.letter === o.letter ? ' selected' : ''}" data-letter="${o.letter}"><span class="letter">${o.letter}</span><span>${o.text}</span></button>`).join('')}
+      </div>
+      <p class="muted" style="font-size:12px;text-align:center;" id="hint">${mine ? 'Answer locked in — you can still change it until time runs out.' : 'Tap an answer. You can change it until time runs out.'}</p>
+    </div>`;
+
+  const opts = document.querySelectorAll('#opts .option');
+  opts.forEach(btn => btn.addEventListener('click', () => {
+    if (live.now() > deadline) return;
+    opts.forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const letter = btn.getAttribute('data-letter');
+    local.answers[q.n] = { letter: letter, ms: Date.now() - questionStart };
+    save();
+    live.ref(local.session, 'answers/q' + q.n + '/' + local.pid).set({ letter: letter, ms: Date.now() - questionStart });
+    document.getElementById('hint').textContent = 'Locked in: ' + letter + ' — you can change it until time runs out.';
+  }));
+
+  clearTimer();
+  const secsEl = document.getElementById('secs');
+  const fill = document.getElementById('tfill');
+  const tbar = document.getElementById('tbar');
+  const tick = () => {
+    const remaining = Math.max(0, deadline - live.now());
+    const s = Math.ceil(remaining / 1000);
+    secsEl.textContent = s + 's';
+    fill.style.width = (remaining / dur * 100) + '%';
+    if (s <= 5) { tbar.classList.add('warn'); secsEl.classList.add('warn'); }
+    if (remaining <= 0) {
+      clearTimer();
+      opts.forEach(b => { b.disabled = true; b.style.opacity = '0.6'; });
+      document.getElementById('hint').textContent = "Time's up — watch the screen for the reveal.";
+    }
+  };
+  tick();
+  timerInterval = setInterval(tick, 500);
+}
+
+function renderReveal(){
+  clearTimer();
+  const q = QUESTIONS[(remote.q || 1) - 1];
+  if (!q) return renderLobby();
+  const mine = local.answers[q.n];
+  const answer = mine && mine.letter;
+  const correct = answer === q.correct;
+  app.innerHTML = `${topBar('Q ' + q.n + ' / 6')}
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:16px;">
+      <div class="feedback ${correct ? 'win' : 'loss'}">
+        <div class="title">${correct ? '✓ Correct!' : (answer ? '✗ Not quite.' : "⏱ Time's up.")}</div>
+        <div style="font-size:14px;color:rgba(247,245,238,0.85);line-height:1.5;">${q.explain}</div>
+      </div>
+      <div class="options">
+        ${q.options.map(o => {
+          let cls = 'option';
+          if (o.letter === q.correct) cls += ' correct';
+          else if (o.letter === answer && !correct) cls += ' wrong';
+          return `<div class="${cls}"><span class="letter">${o.letter}</span><span>${o.text}</span></div>`;
+        }).join('')}
+      </div>
+      <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;color:rgba(247,245,238,0.7);">YOUR SCORE</div>
+        <div style="font-size:26px;font-weight:700;color:var(--gold);">${myScore()} / 6</div>
+      </div>
+      <p class="muted" style="font-size:12px;text-align:center;">Next question drops from the big screen.</p>
+    </div>`;
+}
+
+function renderFinal(){
+  clearTimer();
+  const score = myScore();
+  let verdict = 'Trust your gut a little more.', color = 'var(--paper)';
+  if (score === 6) { verdict = '★ Top Sleuth.'; color = 'var(--gold)'; }
+  else if (score >= 5) { verdict = 'Sharp eyes.'; color = 'var(--gold)'; }
+  else if (score >= 3) { verdict = 'Solid instincts.'; color = 'var(--paper)'; }
+
+  app.innerHTML = `${topBar('FINAL')}
+    <div class="fade-in" style="display:flex;flex-direction:column;gap:18px;">
+      <div class="score-hero">
+        <div class="eyebrow">${local.name || 'Sleuth'}</div>
+        <div class="score">${score}</div>
+        <div class="out-of">OUT OF 6</div>
+        <div class="verdict" style="color:${color};">${verdict}</div>
+      </div>
+      <div class="card" id="podium"><div class="eyebrow" style="margin-bottom:8px;">Top sleuths</div><div class="muted">Waiting for results…</div></div>
+      <div class="card">
+        <div class="eyebrow" style="margin-bottom:12px;">Your run</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${QUESTIONS.map(q => {
+            const a = local.answers[q.n];
+            const ok = a && a.letter === q.correct;
+            return `<div style="display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:center;padding:6px 0;"><span style="font-size:13px;color:rgba(247,245,238,0.55);font-weight:600;">Q${q.n}</span><span style="font-size:14px;color:rgba(247,245,238,0.85);line-height:1.3;">${q.title.replace(/[\?\.\—].*$/, '')}</span><span class="chip ${ok ? 'good' : 'bad'}">${ok ? '✓' : '✗'} ${a ? a.letter : '—'}</span></div>`;
+          }).join('')}
+        </div>
+      </div>
+      <p class="muted" style="font-size:12px;text-align:center;">Pact-One Solutions · Dental IT, Be Worry-Free</p>
+    </div>`;
+
+  live.ref(local.session, 'results').once('value').then(s => {
+    const r = s.val();
+    const el = document.getElementById('podium');
+    if (!r || !r.podium || !el) return;
+    const medals = ['🥇','🥈','🥉'];
+    el.innerHTML = `<div class="eyebrow" style="margin-bottom:8px;">Top sleuths · ${r.players || 0} played · room avg ${r.avg || 0}%</div>` +
+      r.podium.map((p, i) => `<div class="podium-row"><span class="medal">${medals[i]}</span><span class="pname">${String(p.name).replace(/[<>&]/g,'')}</span><span class="pscore">${p.score} / 6</span></div>`).join('');
+  });
+}
+
+// ---- State machine ----
+let lastKey = '';
+function renderFromState(){
+  if (!joined) return renderJoin();
+  if (!remote) return renderLobby();
+  const key = remote.phase + ':' + (remote.q || 0) + ':' + (remote.startedAt || 0);
+  if (key === lastKey) return;
+  lastKey = key;
+  if (remote.phase === 'question') renderQuestion();
+  else if (remote.phase === 'reveal') renderReveal();
+  else if (remote.phase === 'final') renderFinal();
+  else renderLobby();
+}
+
+function listen(){
+  live.ref(local.session, 'state').on('value', s => { remote = s.val(); renderFromState(); });
+}
+
+// ---- Boot ----
+if (!live.configured) renderConfigMissing();
+else if (joined) {
+  live.ref(local.session, 'players/' + local.pid).update({ name: local.name });
+  listen();
+  renderFromState();
+} else renderJoin();
+</script>
+</body>
+</html>

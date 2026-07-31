@@ -1,0 +1,1308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Becoming a Cyber Sleuth — Pact-One</title>
+<meta name="viewport" content="width=1920" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/json" id="speaker-notes">
+[
+"Welcome them. Set the room — phones out, this is interactive. 6 questions, 30 seconds each, real red flags from real dental practices.",
+"Lead with the threat: dental practices are HOT targets — small team, lots of patient data, fast pace. PHI sells for up to $1,000 a record. Pause on the number.",
+"Quick roadmap. Promise the quiz, the new scam types, and the cheat sheet at the end. Keep it tight.",
+"Big moment — phones up. Scan the QR or type the code. Watch the live joined counter climb — advance when it matches the room. Nicknames show on the real leaderboard.",
+"Read the question out loud. The phones unlock the moment this slide is up; the counter under the timer shows how many have answered. When timer hits 0, advance.",
+"Reveal. Walk the red flags one at a time. Ask: who caught the sender domain? The grammar? Pro tip: when in doubt, don't click — verify first.",
+"Two emails. Which would YOU trust? Read both. Start the timer.",
+"Email A is the spoof — CEO gift card request is a classic. Email B is expected, consistent, normal. The key habit: 'Was I expecting this?'",
+"Round 3 — this one's sneakier. RE: in the subject line makes it look like a reply. 30 seconds, go.",
+"The 'RE:' is the giveaway — you never sent the original. Plus an attachment AND a software download. Always verify the sender directly, not by replying.",
+"URLs now. Look closely — characters can lie. Start the timer.",
+"A is the only legit one. B uses a capital I instead of L. C uses a subdomain trick. D swaps an O for a zero. Hover before you click; type known URLs yourself.",
+"Search results — this is how 'Open Dental login' attacks happen. 30 seconds.",
+"B is the trap. Attackers buy ad slots for popular dental software. Bookmark known URLs. If a search result says 'login help' but isn't the brand's domain, it's not safe.",
+"Last one — a text message. 30 seconds.",
+"100% suspicious. Stranger, urgency, asks to talk on the phone — classic vishing setup. If unsure, call the supposed person directly through a known number.",
+"Big reveal — the podium fills from REAL scores (correct answers, fastest wins ties). Ask the room: who's at 5? 6? Tie it back: this same instinct protects the practice every day.",
+"Bust two myths fast: HTTPS doesn't mean safe, and spoofing is everywhere. Don't dwell — keep it punchy.",
+"Two more: PDFs can be weapons, and modern scams are everywhere — gift cards, toll fees, DMV, job offers. The vector changes; the playbook doesn't.",
+"Five habits. Walk them as a checklist. Pause on 'slow down when you feel rushed' — that's the single biggest one.",
+"Big stat. Let it land. 90% of attacks start with phishing — meaning the front line is YOU, not IT.",
+"A real ticket from a real dental client. Walk through what the NOC saw and did. Anonymize as needed.",
+"Another big number — 60% of breaches are human error. Not malice. Not zero-days. Clicks.",
+"Second real example. Tie it to the habit: the team that escalated this one prevented a credential leak.",
+"BEC — the most expensive scam in the playbook. $6.3 billion in 2024 alone. Often starts with a single spoofed email.",
+"Third real example. Show how NOC handled the renewal-invoice spoof. Emphasize: the staff member who flagged it was the hero.",
+"Pivot to other tactics. Data mining first — your LinkedIn and Facebook give attackers ammunition.",
+"Social engineering — the 'I'm from IT' move. Verify roles in person, not over chat or phone.",
+"Phone-based attacks: vishing and smishing. List the common pretexts. The pattern: urgency + authority + unknown sender.",
+"Cyber hygiene. Six habits. Quick read-through. Lock screens is the easy win nobody does.",
+"Culture matters more than tools. Non-judgmental reporting is the single biggest cultural lever — celebrate 'caught a phish' moments out loud.",
+"Wrap with takeaways. Point at the cheat-sheet QR. Resources land on pact-one.com.",
+"Open the floor. Take 3–5 minutes. Land on stories, not theory.",
+"Thank them. Two QR codes — review the session and refer another practice. Hold the slide while people scan."
+]
+</script>
+
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+<!-- 1. TITLE -->
+<section data-label="01 Becoming a Cyber Sleuth" class="slide-dark">
+  <div class="frame" style="justify-content: center; padding-left: 140px; padding-right: 140px;">
+    <img src="https://www.pact-one.com/wp-content/uploads/2024/02/Logo-w.png" alt="Pact-One" style="height: 100px; width: auto; align-self: flex-start;" />
+    <div class="eyebrow" style="color: var(--gold); margin-top: 44px;">Pact-One Training · 2026</div>
+    <h1 class="slide-title" style="font-size: 152px; margin-top: 60px; line-height: 0.98; color: var(--paper);">
+      Becoming a<br/>
+      <span style="color: var(--gold);">Cyber Sleuth.</span>
+    </h1>
+    <p class="slide-sub" style="margin-top: 44px; font-size: 38px; max-width: 1100px; color: var(--paper-2);">
+      A 35-minute interactive training for dental teams. Spot the phish, beat the bad guys, and keep your practice off the front page.
+    </p>
+    <div style="margin-top: 88px; display:flex; align-items: center; gap: 28px; color: rgba(247,245,238,0.7); font-family: var(--font-mono); font-size: 24px;">
+      <span>PRESENTED BY</span>
+      <span style="color: var(--paper); letter-spacing: 0.06em;">PACT-ONE SOLUTIONS</span>
+      <span style="color: var(--gold); letter-spacing: 0.06em;">DENTAL IT, BE WORRY-FREE</span>
+    </div>
+  </div>
+  <div class="brand-bar" style="bottom: 50px;"></div>
+</section>
+
+<!-- 2. WHY MATTER -->
+<section data-label="02 Why dental practices are hot targets">
+  <div class="frame">
+    <div class="eyebrow">01 · The threat</div>
+    <h2 class="slide-title" style="margin-top: 18px; max-width: 1500px;">Dental practices are <span style="color: var(--gold-deep); white-space: nowrap;">hot targets.</span></h2>
+    <div class="split" style="margin-top: 64px; gap: 80px;">
+      <div class="col" style="gap: 28px;">
+        <p class="body-text" style="font-size: 32px;">Three reasons attackers love a dental office:</p>
+        <ul class="numbered-list">
+          <li><span class="num">01</span><span>Patient data is <strong style="color: var(--gold-deep);">gold</strong> on the dark web — full name, DOB, SSN, insurance.</span></li>
+          <li><span class="num">02</span><span>Small teams, fast pace, lots of multitasking. Quick clicks become risky clicks.</span></li>
+          <li><span class="num">03</span><span>Most practices have one IT-aware person — attackers count on the other ten not noticing.</span></li>
+        </ul>
+      </div>
+      <div class="col center" style="gap: 18px;">
+        <div class="tile" style="background: var(--ink); color: var(--paper); padding: 48px 56px; text-align: center; border-radius: 20px;">
+          <div class="bignum" style="color: var(--gold); font-size: 168px;">$1,000</div>
+          <div style="font-size: 26px; color: var(--paper-2); margin-top: 14px; max-width: 360px;">A single health record can be worth up to <strong>$1,000</strong> on the dark web.</div>
+          <div style="font-family: var(--font-mono); font-size: 24px; color: rgba(247,245,238,0.55); margin-top: 18px; letter-spacing: 0.06em;">SOURCE: EXPERIAN</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">02 / 34</div>
+</section>
+
+<!-- 3. WHAT YOU'LL LEARN -->
+<section data-label="03 What you will learn">
+  <div class="frame">
+    <div class="eyebrow">02 · Agenda</div>
+    <h2 class="slide-title" style="margin-top: 18px;">What you'll learn today.</h2>
+    <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 64px;">
+      <div class="tile" style="display:flex; gap: 20px; align-items: flex-start;">
+        <div class="pill pill-gold" style="min-width: 72px; justify-content: center;">01</div>
+        <div>
+          <div style="font-size: 30px; font-weight: 600;">Spot sketchy links &amp; emails</div>
+          <div class="small-text" style="margin-top: 6px;">What red flags look like in the wild.</div>
+        </div>
+      </div>
+      <div class="tile" style="display:flex; gap: 20px; align-items: flex-start;">
+        <div class="pill pill-gold" style="min-width: 72px; justify-content: center;">02</div>
+        <div>
+          <div style="font-size: 30px; font-weight: 600;">Test your sleuthing skills</div>
+          <div class="small-text" style="margin-top: 6px;">6-question live quiz on your phone.</div>
+        </div>
+      </div>
+      <div class="tile" style="display:flex; gap: 20px; align-items: flex-start;">
+        <div class="pill pill-gold" style="min-width: 72px; justify-content: center;">03</div>
+        <div>
+          <div style="font-size: 30px; font-weight: 600;">New scams you need to know</div>
+          <div class="small-text" style="margin-top: 6px;">Vishing, smishing, BEC, deepfakes.</div>
+        </div>
+      </div>
+      <div class="tile" style="display:flex; gap: 20px; align-items: flex-start;">
+        <div class="pill pill-gold" style="min-width: 72px; justify-content: center;">04</div>
+        <div>
+          <div style="font-size: 30px; font-weight: 600;">Cyber hygiene that sticks</div>
+          <div class="small-text" style="margin-top: 6px;">Habits to protect you &amp; the practice.</div>
+        </div>
+      </div>
+      <div class="tile" style="display:flex; gap: 20px; align-items: flex-start; grid-column: 1 / -1;">
+        <div class="pill pill-gold" style="min-width: 72px; justify-content: center;">05</div>
+        <div>
+          <div style="font-size: 30px; font-weight: 600;">How Pact-One has your back</div>
+          <div class="small-text" style="margin-top: 6px;">What our NOC team catches every day — and what you can escalate to us.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">03 / 34</div>
+</section>
+
+<!-- 4. JOIN -->
+<section data-label="04 Join the challenge" class="slide-gold">
+  <div class="frame">
+    <div class="eyebrow">03 · Cyber Sleuth Challenge</div>
+    <div class="split split-1-2" style="margin-top: 24px; align-items: center; gap: 80px;">
+      <div class="qr-card">
+        <div class="qrbox" id="join-qr"><div style="font-family: var(--font-mono); color: var(--muted); font-size: 24px; padding: 12px; text-align: center;">QR will render on load</div></div>
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">SCAN TO JOIN</div>
+        <div class="url" id="join-url">quiz.html</div>
+        <div style="font-size: 30px; font-weight: 600; color: var(--ink); letter-spacing: 0.18em;">CODE <span data-session-code style="color: var(--teal);">----</span></div>
+      </div>
+      <div class="col" style="gap: 28px;">
+        <h2 class="slide-title" style="font-size: 96px; line-height: 1;">Ready to find the<br/>red flags?</h2>
+        <p class="body-text" style="font-size: 32px; max-width: 720px;">Scan the QR — or open the link and enter the code. Pick a nickname. Six questions, 30 seconds each, answered live on your phone.</p>
+        <div style="display:flex; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+          <span class="pill pill-gold" style="font-size: 24px;">⏱ 30s per question</span>
+          <span class="pill pill-gold" style="font-size: 24px;">6 real-world scenarios</span>
+          <span class="pill pill-gold" style="font-size: 24px;">Live leaderboard</span>
+          <span class="pill pill-teal" style="font-size: 24px;"><span data-player-count>0</span>&nbsp;sleuths joined</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar" style="opacity: 0.4;"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">04 / 34</div>
+</section>
+
+<!-- 5. QUESTION 1 - LIVE QUIZ SLIDE -->
+<section data-label="05 Q1 — Spot the phish 1" data-quiz="1" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 1 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">Spot the phish</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">What should you do with this email?</h2>
+    <div class="split" style="margin-top: 32px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.3fr 1fr;">
+      <div class="email-mock">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Inbox · 1 message</span></div>
+        <div class="em-subject">⚠ URGENT — Patient Records Verification REQUIRED</div>
+        <div class="em-meta">
+          From: DentaIcare Billing &lt;dentaicare-billing@securemail-portal.co&gt;<br/>
+          To: front desk · Today 4:51 AM
+        </div>
+        <div class="em-body">
+          Hello Esteemed Dental Office,<br/><br/>
+          You're patient records system require an immediate verification or your account WILL be suspend within 24 hours. Please verify now to keep access to insurance billings.<br/><br/>
+          <a href="#">→ Verify account now</a> &nbsp;·&nbsp; <a href="#">→ Click here if button broken</a> &nbsp;·&nbsp; <a href="#">→ Contact billing</a><br/><br/>
+          Sincerely,<br/>
+          DentaIcare Security Team
+        </div>
+      </div>
+      <div class="col" style="gap: 24px; justify-content: space-between;">
+        <div class="quiz-options" data-quiz-options>
+          <div class="opt" data-letter="A"><span class="letter">A</span><span>Click the verify link before access is suspended</span></div>
+          <div class="opt" data-letter="B"><span class="letter">B</span><span>Forward it to a coworker to double-check</span></div>
+          <div class="opt" data-letter="C"><span class="letter">C</span><span>Don't click — verify with the sender directly</span></div>
+          <div class="opt" data-letter="D"><span class="letter">D</span><span>Reply asking who they are</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 28px; justify-content: flex-end;">
+          <div class="small-text">Phones up. 30 seconds.</div>
+          <div class="timer-ring" data-timer="30">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"/>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+            </svg>
+            <div class="digit">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">05 / 34</div>
+</section>
+
+<!-- 6. ANSWER 1 -->
+<section data-label="06 Answer 1 — red flags" data-reveal="1" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q1</div>
+      <div class="pill pill-gold" style="font-size: 24px;">5+ red flags</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">C — Don't click. Verify first.</span></h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 26px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="1">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="margin-top: 16px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 26px; margin-top: 6px;">When in doubt, <strong>don't click</strong>. Verify by phone or in person.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 14px;">
+        <div style="font-size: 28px; font-weight: 600;">The red flags:</div>
+        <ul class="flag-list">
+          <li><span class="flag-marker">🚩</span><span>Sender domain is <code style="font-family: var(--font-mono); background:#fbe9e6; padding: 2px 8px; border-radius: 4px;">securemail-portal.co</code> — not the brand</span></li>
+          <li><span class="flag-marker">🚩</span><span>Brand name spelled <code style="font-family: var(--font-mono); background:#fbe9e6; padding: 2px 8px; border-radius: 4px;">DentaIcare</code> with capital "I" instead of "l"</span></li>
+          <li><span class="flag-marker">🚩</span><span>Urgent 24-hour suspension threat</span></li>
+          <li><span class="flag-marker">🚩</span><span>"You're" instead of "Your" — grammar errors</span></li>
+          <li><span class="flag-marker">🚩</span><span>Three different links, generic greeting, sent at 4:51 AM</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">06 / 34</div>
+</section>
+
+<!-- 7. QUESTION 2 -->
+<section data-label="07 Q2 — Which email is trustworthy" data-quiz="2" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 2 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">Trust check</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">Which email is trustworthy?</h2>
+    <div class="row" style="margin-top: 28px; gap: 32px; flex: 1; min-height: 0;">
+      <div class="email-mock" style="flex: 1;">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Email A</span></div>
+        <div class="em-subject">Need a quick favor — don't call</div>
+        <div class="em-meta">
+          From: Dr. Reynolds &lt;drrey.office@gmail.com&gt;<br/>
+          To: front desk · Today 11:42 AM
+        </div>
+        <div class="em-body" style="font-size: 24px;">
+          Hi — are you at your desk? I need you to grab <strong>5 × $200 Apple gift cards</strong> for a patient gift, can't talk right now (in meetings). Scratch them off and send me the codes. I'll reimburse you tonight.<br/><br/>
+          — Dr. R<br/>
+          Sent from my iPhone
+        </div>
+      </div>
+      <div class="email-mock" style="flex: 1;">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Email B</span></div>
+        <div class="em-subject">Order #DS-22841 confirmation — Henry Schein</div>
+        <div class="em-meta">
+          From: Henry Schein Orders &lt;orders@henryschein.com&gt;<br/>
+          To: front desk · Wed 9:12 AM
+        </div>
+        <div class="em-body" style="font-size: 24px;">
+          Hi Lauren,<br/><br/>
+          Thanks for your order placed Tuesday. <strong>Order #DS-22841</strong> ships Thursday from our Sparks, NV warehouse. Tracking will follow.<br/><br/>
+          Reply to this email or call your rep Mark at 800-372-XXXX with any questions.<br/><br/>
+          — Henry Schein Customer Care
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; gap: 24px; align-items: center; margin-top: 24px;">
+      <div class="quiz-options" data-quiz-options style="grid-template-columns: repeat(4, 1fr); display:grid; flex: 1;">
+        <div class="opt" data-letter="A"><span class="letter">A</span><span>Email A</span></div>
+        <div class="opt" data-letter="B"><span class="letter">B</span><span>Email B</span></div>
+        <div class="opt" data-letter="C"><span class="letter">C</span><span>Both</span></div>
+        <div class="opt" data-letter="D"><span class="letter">D</span><span>Neither</span></div>
+      </div>
+      <div class="timer-ring" data-timer="30" style="width: 140px; height: 140px;">
+        <svg width="140" height="140" viewBox="0 0 180 180">
+          <circle class="track" cx="90" cy="90" r="80" stroke-width="12" fill="none"/>
+          <circle class="fill" cx="90" cy="90" r="80" stroke-width="12" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+        </svg>
+        <div class="digit" style="font-size: 56px;">30</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">07 / 34</div>
+</section>
+
+<!-- 8. ANSWER 2 -->
+<section data-label="08 Answer 2 — A is the spoof" data-reveal="2" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q2</div>
+      <div class="pill pill-gold" style="font-size: 24px;">Trust check</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">B — only B is safe.</span></h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 26px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="2">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="margin-top: 16px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 26px; margin-top: 6px;">Always ask: <em>"Was I expecting this? Does it make sense?"</em></div>
+        </div>
+      </div>
+      <div class="col" style="gap: 22px;">
+        <div class="tile" style="background: #fbe9e6; border-left: 4px solid var(--danger);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--danger); letter-spacing: 0.08em;">A — SPOOF</div>
+          <div style="font-size: 24px; margin-top: 8px;">Personal @gmail address. Urgency + gift card request + "don't call me" = classic CEO fraud.</div>
+        </div>
+        <div class="tile" style="background: #e8f1de; border-left: 4px solid var(--safe);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--safe); letter-spacing: 0.08em;">B — SAFE</div>
+          <div style="font-size: 24px; margin-top: 8px;">Expected vendor. Real domain. Specific order number. Named contact with a real phone number.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">08 / 34</div>
+</section>
+
+<!-- 9. QUESTION 3 -->
+<section data-label="09 Q3 — Spot the phish 2" data-quiz="3" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 3 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">Spot the phish</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">What should you do here?</h2>
+    <div class="split" style="margin-top: 32px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.3fr 1fr;">
+      <div class="email-mock">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Inbox · 1 message</span></div>
+        <div class="em-subject">RE: Q4 benefits review — please confirm</div>
+        <div class="em-meta">
+          From: HR Benefits &lt;benefits.team@hr-portal-secure.com&gt;<br/>
+          To: front desk · Today 7:08 AM<br/>
+          Attachment: 📎 BenefitsReview_Q4.pdf
+        </div>
+        <div class="em-body">
+          Following up on our last message — please <a href="#">review the attached benefits document</a> and confirm by EOD.<br/><br/>
+          If you have trouble opening it, you may need to <a href="#">install the updated PDF viewer</a> from our portal.<br/><br/>
+          Thanks,<br/>HR Benefits Team
+        </div>
+      </div>
+      <div class="col" style="gap: 24px; justify-content: space-between;">
+        <div class="quiz-options" data-quiz-options>
+          <div class="opt" data-letter="A"><span class="letter">A</span><span>Open the PDF attachment</span></div>
+          <div class="opt" data-letter="B"><span class="letter">B</span><span>Click the link to install the PDF viewer</span></div>
+          <div class="opt" data-letter="C"><span class="letter">C</span><span>Verify directly with the sender first</span></div>
+          <div class="opt" data-letter="D"><span class="letter">D</span><span>Reply to the email asking what it's about</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 28px; justify-content: flex-end;">
+          <div class="small-text">30 seconds.</div>
+          <div class="timer-ring" data-timer="30">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"/>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+            </svg>
+            <div class="digit">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">09 / 34</div>
+</section>
+
+<!-- 10. ANSWER 3 -->
+<section data-label="10 Answer 3 — RE: trick" data-reveal="3" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q3</div>
+      <div class="pill pill-gold" style="font-size: 24px;">3–4 red flags</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">C — verify the sender directly.</span></h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 26px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="3">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="margin-top: 16px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 26px; margin-top: 6px;">Verify by calling the supposed sender on a known number — never reply to the email.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 14px;">
+        <div style="font-size: 28px; font-weight: 600;">The red flags:</div>
+        <ul class="flag-list">
+          <li><span class="flag-marker">🚩</span><span><strong>"RE:"</strong> in the subject when you never sent the original</span></li>
+          <li><span class="flag-marker">🚩</span><span>Domain <code style="font-family: var(--font-mono); background:#fbe9e6; padding: 2px 8px; border-radius: 4px;">hr-portal-secure.com</code> — not your actual HR domain</span></li>
+          <li><span class="flag-marker">🚩</span><span>Unsolicited attachment you weren't expecting</span></li>
+          <li><span class="flag-marker">🚩</span><span>Asks you to install a "PDF viewer" — software-download bait</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">10 / 34</div>
+</section>
+
+<!-- 11. QUESTION 4 -->
+<section data-label="11 Q4 — URL red flags" data-quiz="4" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 4 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">URL check</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">Which of these URLs are safe?</h2>
+    <div class="split" style="margin-top: 32px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.2fr 1fr;">
+      <div class="col" style="gap: 14px;">
+        <div class="url-row" data-letter="A"><span class="letter">A</span><span>https://www.opendental.com/login</span></div>
+        <div class="url-row" data-letter="B"><span class="letter">B</span><span>http://opendental-Iogin.com/account</span></div>
+        <div class="url-row" data-letter="C"><span class="letter">C</span><span>https://opendental.support-help.net/billing</span></div>
+        <div class="url-row" data-letter="D"><span class="letter">D</span><span>https://www.amaz0n.com/dental-supplies</span></div>
+      </div>
+      <div class="col" style="gap: 24px; justify-content: space-between;">
+        <div class="quiz-options" data-quiz-options>
+          <div class="opt" data-letter="A"><span class="letter">A</span><span>Only A is suspicious</span></div>
+          <div class="opt" data-letter="B"><span class="letter">B</span><span>Only A is safe; B, C, D are traps</span></div>
+          <div class="opt" data-letter="C"><span class="letter">C</span><span>All look fine</span></div>
+          <div class="opt" data-letter="D"><span class="letter">D</span><span>All are suspicious</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 28px; justify-content: flex-end;">
+          <div class="small-text">Hover before you click.</div>
+          <div class="timer-ring" data-timer="30">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"/>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+            </svg>
+            <div class="digit">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">11 / 34</div>
+</section>
+
+<!-- 12. ANSWER 4 -->
+<section data-label="12 Answer 4 — URL flags" data-reveal="4" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q4</div>
+      <div class="pill pill-gold" style="font-size: 24px;">B is correct</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">B — only A is legit.</span></h2>
+    <div class="split" style="margin-top: 28px; gap: 48px; flex: 1; min-height: 0; grid-template-columns: 1.2fr 1fr;">
+      <div class="col" style="gap: 12px;">
+        <div class="url-row good" data-letter="A"><span class="letter">A</span><span>https://www.opendental.com/login</span><span class="marker">SAFE</span></div>
+        <div class="url-row bad" data-letter="B"><span class="letter">B</span><span>http://opendental-<span style="background:#fbe9e6;padding:0 4px;border-radius:3px;">I</span>ogin.com/account</span><span class="marker">CAPITAL I, NOT L</span></div>
+        <div class="url-row bad" data-letter="C"><span class="letter">C</span><span>https://opendental.<span style="background:#fbe9e6;padding:0 4px;border-radius:3px;">support-help.net</span>/billing</span><span class="marker">FAKE SUBDOMAIN</span></div>
+        <div class="url-row bad" data-letter="D"><span class="letter">D</span><span>https://www.amaz<span style="background:#fbe9e6;padding:0 4px;border-radius:3px;">0</span>n.com/dental-supplies</span><span class="marker">ZERO, NOT O</span></div>
+      </div>
+      <div class="col" style="gap: 18px;">
+        <div class="body-text" style="font-size: 24px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="4">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 24px; margin-top: 4px;">Type known URLs yourself, or use bookmarks. Characters can lie.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">12 / 34</div>
+</section>
+
+<!-- 13. QUESTION 5 -->
+<section data-label="13 Q5 — Search result trap" data-quiz="5" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 5 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">Search result</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">Which search result is the trap?</h2>
+    <div class="split" style="margin-top: 28px; gap: 48px; flex: 1; min-height: 0; grid-template-columns: 1.2fr 1fr;">
+      <div class="col" style="gap: 16px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--muted); letter-spacing: 0.08em;">GOOGLE SEARCH · "OPEN DENTAL LOGIN"</div>
+        <div class="card" style="padding: 24px 28px; border-radius: 12px;">
+          <div style="display:flex; gap: 18px; align-items: flex-start;">
+            <div class="pill" style="background: var(--gold-soft); color: var(--gold-deep); font-size: 24px; padding: 4px 12px;">A</div>
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--safe);">https://www.opendental.com › login</div>
+              <div style="font-size: 26px; font-weight: 600; color: var(--line-blue); margin-top: 4px;">Open Dental — Practice Management Login</div>
+              <div style="font-size: 24px; color: var(--muted); margin-top: 6px;">Sign in to your Open Dental account. Trusted by 80,000+ dental professionals…</div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="padding: 24px 28px; border-radius: 12px;">
+          <div style="display:flex; gap: 18px; align-items: flex-start;">
+            <div class="pill" style="background: var(--gold-soft); color: var(--gold-deep); font-size: 24px; padding: 4px 12px;">B</div>
+            <div>
+              <div style="display:flex; gap: 10px; align-items: center;">
+                <span style="background: #f0eee5; font-family: var(--font-mono); font-size: 24px; padding: 2px 8px; border-radius: 3px; color: var(--muted);">Ad</span>
+                <span style="font-family: var(--font-mono); font-size: 24px; color: var(--ink-2);">https://www.opendental-login-help.com</span>
+              </div>
+              <div style="font-size: 26px; font-weight: 600; color: var(--line-blue); margin-top: 4px;">Open Dental Login — Get Help Fast</div>
+              <div style="font-size: 24px; color: var(--muted); margin-top: 6px;">Fast Open Dental sign-in support. Reset password, recover account, billing help…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="gap: 24px; justify-content: space-between;">
+        <div class="quiz-options" data-quiz-options>
+          <div class="opt" data-letter="A"><span class="letter">A</span><span>Result A</span></div>
+          <div class="opt" data-letter="B"><span class="letter">B</span><span>Result B</span></div>
+          <div class="opt" data-letter="C"><span class="letter">C</span><span>Both are traps</span></div>
+          <div class="opt" data-letter="D"><span class="letter">D</span><span>Neither — both are fine</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 28px; justify-content: flex-end;">
+          <div class="small-text">30 seconds.</div>
+          <div class="timer-ring" data-timer="30">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"/>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+            </svg>
+            <div class="digit">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">13 / 34</div>
+</section>
+
+<!-- 14. ANSWER 5 -->
+<section data-label="14 Answer 5 — Spoofed search" data-reveal="5" data-correct="B">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q5</div>
+      <div class="pill pill-gold" style="font-size: 24px;">Ad-bought spoof</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">B — that's a paid spoof.</span></h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 26px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="5">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="margin-top: 16px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 26px; margin-top: 6px;">Type the known URL yourself, or bookmark it. Don't trust the top search result.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 18px;">
+        <div style="font-size: 28px; font-weight: 600;">Why B is the trap:</div>
+        <ul class="flag-list">
+          <li><span class="flag-marker">🚩</span><span>It's an <strong>ad</strong>, not an organic result — attackers buy ad space</span></li>
+          <li><span class="flag-marker">🚩</span><span>Domain is <code style="font-family: var(--font-mono); background:#fbe9e6; padding: 2px 8px; border-radius: 4px;">opendental-login-help.com</code> — not opendental.com</span></li>
+          <li><span class="flag-marker">🚩</span><span>"Get help fast" pretext — designed for stressed staff</span></li>
+        </ul>
+        <div class="tile" style="background: #fbe9e6; border-left: 4px solid var(--danger); margin-top: 8px;">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--danger); letter-spacing: 0.08em;">WHAT HAPPENS NEXT</div>
+          <div style="font-size: 24px; margin-top: 6px;">A spoof page collects your credentials, then logs you in to the real site so you don't notice. Your login is already sold.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">14 / 34</div>
+</section>
+
+<!-- 15. QUESTION 6 -->
+<section data-label="15 Q6 — Scam text" data-quiz="6" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Question 6 of 6</div>
+      <div class="pill pill-ink" style="font-size: 24px;">Smishing</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 18px; font-size: 56px;">Scam text or legit message?</h2>
+    <div class="split" style="margin-top: 28px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1fr 1.4fr;">
+      <div class="center" style="height: 100%;">
+        <div class="sms" style="width: 480px;">
+          <div class="stamp">Today · 10:42 AM · +1 (702) 555-0188</div>
+          <div class="bubble">Hi, is this Juliana Roth?</div>
+          <div class="bubble">This is Brad Barton from Metro Presort Inc. We have an urgent matter — can we talk on the phone today?</div>
+          <div class="bubble">Please reply ASAP. Time-sensitive.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 24px; justify-content: space-between;">
+        <div class="quiz-options" data-quiz-options>
+          <div class="opt" data-letter="A"><span class="letter">A</span><span>Reply yes — it sounds important</span></div>
+          <div class="opt" data-letter="B"><span class="letter">B</span><span>Call the number to find out who it is</span></div>
+          <div class="opt" data-letter="C"><span class="letter">C</span><span>Don't reply — verify the person through a known channel</span></div>
+          <div class="opt" data-letter="D"><span class="letter">D</span><span>Block, delete, move on</span></div>
+        </div>
+        <div style="display:flex; align-items:center; gap: 28px; justify-content: flex-end;">
+          <div class="small-text">Last one. 30 seconds.</div>
+          <div class="timer-ring" data-timer="30">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"/>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"/>
+            </svg>
+            <div class="digit">30</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">15 / 34</div>
+</section>
+
+<!-- 16. ANSWER 6 -->
+<section data-label="16 Answer 6 — Smishing" data-reveal="6" data-correct="C">
+  <div class="frame">
+    <div style="display:flex; align-items:center; justify-content: space-between;">
+      <div class="eyebrow">Reveal · Q6</div>
+      <div class="pill pill-gold" style="font-size: 24px;">100% suspicious</div>
+    </div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Answer: <span style="color: var(--gold-deep);">C — verify through a known channel.</span></h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1.1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 26px; color: var(--muted);">Real-time audience response:</div>
+        <div class="tally" data-tally="6">
+          <div class="tally-row" data-letter="A"><div class="tletter">A</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="B"><div class="tletter">B</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row is-correct" data-letter="C"><div class="tletter">C</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+          <div class="tally-row" data-letter="D"><div class="tletter">D</div><div class="tbar"><div class="tfill"></div></div><div class="tcount">0</div></div>
+        </div>
+        <div class="tile" style="margin-top: 16px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">PRO TIP</div>
+          <div style="font-size: 26px; margin-top: 6px;">Call the supposed person on a known number. Never reply to the suspicious thread.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 14px;">
+        <div style="font-size: 28px; font-weight: 600;">Why it's smishing:</div>
+        <ul class="flag-list">
+          <li><span class="flag-marker">🚩</span><span>"Are you Juliana?" — testing the number is live</span></li>
+          <li><span class="flag-marker">🚩</span><span>Unknown "Brad" from unknown "Metro Presort Inc."</span></li>
+          <li><span class="flag-marker">🚩</span><span>Urgency + "can we talk on the phone today?"</span></li>
+          <li><span class="flag-marker">🚩</span><span>Personal cell — not a vendor channel you've used before</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">16 / 34</div>
+</section>
+
+<!-- 17. FINAL SCOREBOARD -->
+<section data-label="17 Final scoreboard" class="slide-gold">
+  <div class="frame">
+    <div class="eyebrow">Cyber Sleuth Challenge · Final results</div>
+    <h2 class="slide-title" style="margin-top: 16px; font-size: 96px;">Who beat the bad guys?</h2>
+    <div class="split" style="margin-top: 48px; gap: 60px; flex: 1; min-height: 0; grid-template-columns: 1.4fr 1fr;">
+      <div class="col" style="justify-content: flex-end; gap: 28px;">
+        <div class="podium">
+          <div class="step h2" data-rank="2">
+            <div class="rank">SILVER</div>
+            <div class="name" data-name>—</div>
+            <div class="pts" data-pts>0 / 6</div>
+          </div>
+          <div class="step h1" data-rank="1">
+            <div class="rank" style="color: var(--gold); font-size: 28px;">★ TOP SLEUTH</div>
+            <div class="name" data-name style="font-size: 48px;">—</div>
+            <div class="pts" data-pts style="font-size: 36px;">0 / 6</div>
+          </div>
+          <div class="step h3" data-rank="3">
+            <div class="rank">BRONZE</div>
+            <div class="name" data-name>—</div>
+            <div class="pts" data-pts>0 / 6</div>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="gap: 28px;">
+        <div class="tile" style="background: rgba(222,172,39,0.16); border: 1px solid rgba(222,172,39,0.4);">
+          <div style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.08em; color: var(--gold);">ROOM AVERAGE</div>
+          <div class="bignum" style="font-size: 120px; color: var(--gold);" data-room-avg>0%</div>
+          <div class="small-text" style="color: var(--paper-2);" data-room-line>Average score across the room</div>
+        </div>
+        <div class="tile" style="background: rgba(247,245,238,0.06);">
+          <div style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.08em; color: var(--gold);">CALL IT OUT</div>
+          <div style="font-size: 26px; color: var(--paper); margin-top: 10px;">Got 6/6? Stand up. 5? Raise a hand. Anyone catch the spoofed I in <code style="font-family: var(--font-mono);">DentaIcare</code>? That instinct is what protects the practice every day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">17 / 34</div>
+</section>
+
+<!-- 18. CYBER MYTHS -->
+<section data-label="18 Cyber myths debunked">
+  <div class="frame">
+    <div class="eyebrow">04 · Mythbusting</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Cyber myths, debunked.</h2>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; flex: 1; min-height: 0;">
+      <div class="card" style="padding: 44px;">
+        <div class="pill pill-danger" style="font-size: 24px;">MYTH</div>
+        <div style="font-size: 36px; font-weight: 600; margin-top: 14px; line-height: 1.2;">"If it says HTTPS, it's safe."</div>
+        <div style="margin-top: 18px; height: 1px; background: rgba(11,10,8,0.08);"></div>
+        <div class="pill pill-safe" style="margin-top: 18px; font-size: 24px;">REALITY</div>
+        <div class="body-text" style="margin-top: 10px;">HTTPS only means the connection is encrypted — not that the site is legitimate. Attackers get free certificates in minutes. Look at the <strong>domain</strong>, not the lock.</div>
+      </div>
+      <div class="card" style="padding: 44px;">
+        <div class="pill pill-danger" style="font-size: 24px;">MYTH</div>
+        <div style="font-size: 36px; font-weight: 600; margin-top: 14px; line-height: 1.2;">"If it's from someone I know, it's fine."</div>
+        <div style="margin-top: 18px; height: 1px; background: rgba(11,10,8,0.08);"></div>
+        <div class="pill pill-safe" style="margin-top: 18px; font-size: 24px;">REALITY</div>
+        <div class="body-text" style="margin-top: 10px;"><strong>Spoofing is everywhere.</strong> Display names, sender addresses, even phone numbers can be faked. If the request feels off, verify through a separate channel.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">18 / 34</div>
+</section>
+
+<!-- 19. MORE MYTHS -->
+<section data-label="19 Modern scams everywhere">
+  <div class="frame">
+    <div class="eyebrow">04 · Mythbusting (cont.)</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Modern scams are everywhere.</h2>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 36px; flex: 1; min-height: 0;">
+      <div class="card" style="padding: 44px;">
+        <div class="pill pill-danger" style="font-size: 24px;">MYTH</div>
+        <div style="font-size: 36px; font-weight: 600; margin-top: 14px; line-height: 1.2;">"PDFs can't hurt you."</div>
+        <div style="margin-top: 18px; height: 1px; background: rgba(11,10,8,0.08);"></div>
+        <div class="pill pill-safe" style="margin-top: 18px; font-size: 24px;">REALITY</div>
+        <div class="body-text" style="margin-top: 10px;">PDFs can carry malware. They can run scripts, redirect you to credential-stealing sites, and embed malicious links that look harmless until you click.</div>
+      </div>
+      <div class="card" style="padding: 44px;">
+        <div style="font-size: 36px; font-weight: 600; line-height: 1.2;">The pretexts you'll see this year:</div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin-top: 22px;">
+          <div style="font-size: 24px;">🎁 Gift card requests</div>
+          <div style="font-size: 24px;">🚨 "Urgent" account alerts</div>
+          <div style="font-size: 24px;">💼 Fake job offers</div>
+          <div style="font-size: 24px;">🛣 Unpaid toll fees</div>
+          <div style="font-size: 24px;">🚗 DMV penalty notices</div>
+          <div style="font-size: 24px;">📦 Delivery rescheduling</div>
+          <div style="font-size: 24px;">🏦 Bank fraud "alerts"</div>
+          <div style="font-size: 24px;">🤖 AI deepfake voice calls</div>
+        </div>
+        <div class="small-text" style="margin-top: 22px;">Vectors change. The playbook — urgency, authority, secrecy — does not.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">19 / 34</div>
+</section>
+
+<!-- 20. SUPER SLEUTH BEST PRACTICES -->
+<section data-label="20 Super sleuth best practices" class="slide-dark">
+  <div class="frame">
+    <div class="eyebrow">05 · The playbook</div>
+    <h2 class="slide-title" style="margin-top: 18px;">How to be a <span style="color: var(--gold);">super cyber sleuth</span>.</h2>
+    <p class="body-text" style="font-size: 30px; max-width: 1200px; margin-top: 22px; color: var(--paper-2);">Ditch the magnifying glass. Five habits. That's the whole job.</p>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; flex: 1; min-height: 0;">
+      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">01</div>
+        <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Pause<br/>before you click.</div>
+        <div class="small-text" style="color: var(--paper-2);">Two seconds breaks the autopilot.</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">02</div>
+        <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Hover<br/>to inspect.</div>
+        <div class="small-text" style="color: var(--paper-2);">Read the real URL before you trust the link text.</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">03</div>
+        <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Verify<br/>the source.</div>
+        <div class="small-text" style="color: var(--paper-2);">Call direct. Walk down the hall. Don't just reply.</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">04</div>
+        <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Slow down<br/>when rushed.</div>
+        <div class="small-text" style="color: var(--paper-2);">Urgency is the attacker's #1 tool. Take it back.</div>
+      </div>
+      <div class="tile" style="background: rgba(222,172,39,0.18); display:flex; flex-direction: column; gap: 16px; border: 1px solid rgba(222,172,39,0.4);">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">05</div>
+        <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Trust<br/>your instincts.</div>
+        <div class="small-text" style="color: var(--paper-2);">If it feels off, it probably is. Say something.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">20 / 34</div>
+</section>
+
+<!-- 21. STAT 90% -->
+<section data-label="21 90% phishing stat" class="slide-gold">
+  <div class="frame">
+    <div class="eyebrow">06 · Real scams in dental practices</div>
+    <div class="row" style="flex: 1; align-items: center; gap: 80px; margin-top: 40px;">
+      <div class="col" style="flex: 1;">
+        <div class="bignum" style="color: var(--gold); font-size: 320px; line-height: 0.9;">90<span style="font-size: 200px;">%</span></div>
+      </div>
+      <div class="col" style="flex: 1; gap: 28px;">
+        <div class="slide-sub" style="font-size: 48px; line-height: 1.25; color: var(--paper);">Phishing accounts for <strong style="color: var(--gold);">90% of all cyberattacks.</strong></div>
+        <div class="body-text" style="font-size: 28px; color: var(--paper-2);">It's not zero-days. It's not nation-state actors. It's the inbox — and that means the front line is you, not IT.</div>
+        <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 24px; color: rgba(247,245,238,0.6); letter-spacing: 0.08em;">SOURCE: CISA · CYBERSECURITY &amp; INFRASTRUCTURE SECURITY AGENCY</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">21 / 34</div>
+</section>
+
+<!-- 22. REAL SCAM CASE 1 -->
+<section data-label="22 Real scam 1">
+  <div class="frame">
+    <div class="eyebrow">Case file · 01</div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Spoofed wire transfer request.</h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="email-mock">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>From service ticket — anonymized</span></div>
+        <div class="em-subject">Wire payment — need it out today</div>
+        <div class="em-meta">
+          From: "Dr. M." &lt;drm.office.urgent@protonmail.com&gt;<br/>
+          To: office manager · Tue 8:02 AM
+        </div>
+        <div class="em-body" style="font-size: 24px;">
+          Are you in office? I need a quick wire processed before noon — vendor is holding shipment. <strong>$14,820.</strong> Routing &amp; account in the next email. Keep this between us until it goes through, please. — Dr. M
+        </div>
+      </div>
+      <div class="col" style="gap: 20px;">
+        <div class="tile" style="background: var(--paper-2);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">REPORTED TO PACT-ONE</div>
+          <div style="font-size: 26px; margin-top: 8px; font-weight: 500;">Office manager flagged it instead of acting.</div>
+        </div>
+        <div class="card" style="padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.08em; color: var(--muted);">NOC ACTIONS</div>
+          <ul class="check-list" style="margin-top: 14px;">
+            <li>Reviewed mail headers — confirmed spoof</li>
+            <li>Blocked sender domain at the tenant level</li>
+            <li>Reported the phishing to Outlook Web App</li>
+            <li>Notified the client and shared a coaching note for the team</li>
+          </ul>
+        </div>
+        <div class="tile" style="background: #e8f1de; border-left: 4px solid var(--safe);">
+          <div style="font-size: 24px;"><strong>Outcome:</strong> $14,820 stayed in the practice's bank account. The hero was the staff member who noticed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">22 / 34</div>
+</section>
+
+<!-- 23. STAT 60% -->
+<section data-label="23 60% human error stat" class="slide-gold">
+  <div class="frame">
+    <div class="eyebrow">06 · Real scams in dental practices</div>
+    <div class="row" style="flex: 1; align-items: center; gap: 80px; margin-top: 40px;">
+      <div class="col" style="flex: 1;">
+        <div class="bignum" style="color: var(--gold); font-size: 320px; line-height: 0.9;">60<span style="font-size: 200px;">%</span></div>
+      </div>
+      <div class="col" style="flex: 1; gap: 28px;">
+        <div class="slide-sub" style="font-size: 48px; line-height: 1.25; color: var(--paper);">of data breaches involve <strong style="color: var(--gold);">human error.</strong></div>
+        <div class="body-text" style="font-size: 28px; color: var(--paper-2);">Not malice. Not magic. Mostly: someone clicked something they shouldn't have, on a Tuesday morning, before coffee.</div>
+        <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 24px; color: rgba(247,245,238,0.6); letter-spacing: 0.08em;">SOURCE: VERIZON 2025 DATA BREACH INVESTIGATIONS REPORT</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">23 / 34</div>
+</section>
+
+<!-- 24. REAL SCAM CASE 2 -->
+<section data-label="24 Real scam 2">
+  <div class="frame">
+    <div class="eyebrow">Case file · 02</div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Fake "IT" credential request.</h2>
+    <div class="split" style="margin-top: 36px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="email-mock">
+        <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>From service ticket — anonymized</span></div>
+        <div class="em-subject">Mailbox quota issue — quick verification</div>
+        <div class="em-meta">
+          From: IT Helpdesk &lt;it-support@office365-tenant.com&gt;<br/>
+          To: hygienist · Mon 12:34 PM
+        </div>
+        <div class="em-body" style="font-size: 24px;">
+          Hi — our system shows your mailbox is at 99% capacity. To prevent send/receive failures, please <a href="#">re-authenticate with your username and password here</a>. Process takes 30 seconds. — IT
+        </div>
+      </div>
+      <div class="col" style="gap: 20px;">
+        <div class="tile" style="background: var(--paper-2);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">REPORTED TO PACT-ONE</div>
+          <div style="font-size: 26px; margin-top: 8px; font-weight: 500;">Hygienist asked the office manager before clicking. That's all it took.</div>
+        </div>
+        <div class="card" style="padding: 28px;">
+          <div style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.08em; color: var(--muted);">NOC ACTIONS</div>
+          <ul class="check-list" style="margin-top: 14px;">
+            <li>Investigated the sender and the spoof domain</li>
+            <li>Confirmed no real mailbox quota issue</li>
+            <li>Notified the client and the affected user</li>
+            <li>Pushed a refresher cyber-best-practices brief to the team</li>
+          </ul>
+        </div>
+        <div class="tile" style="background: #e8f1de; border-left: 4px solid var(--safe);">
+          <div style="font-size: 24px;"><strong>Outcome:</strong> No credentials lost. Pact-One IT will never ask for your password.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">24 / 34</div>
+</section>
+
+<!-- 25. STAT $6.3B -->
+<section data-label="25 6.3 billion BEC stat" class="slide-gold">
+  <div class="frame">
+    <div class="eyebrow">06 · Real scams in dental practices</div>
+    <div class="row" style="flex: 1; align-items: center; gap: 80px; margin-top: 40px;">
+      <div class="col" style="flex: 1;">
+        <div class="bignum" style="color: var(--gold); font-size: 260px; line-height: 0.9;">$6.3B</div>
+        <div style="font-family: var(--font-mono); font-size: 24px; color: rgba(247,245,238,0.7); letter-spacing: 0.08em; margin-top: 24px;">IN 2024 ALONE</div>
+      </div>
+      <div class="col" style="flex: 1; gap: 28px;">
+        <div class="slide-sub" style="font-size: 48px; line-height: 1.25; color: var(--paper);">transferred in <strong style="color: var(--gold);">Business Email Compromise</strong> scams.</div>
+        <div class="body-text" style="font-size: 28px; color: var(--paper-2);">BEC is the single most expensive scam in the playbook. It usually starts with one spoofed email — and ends in a wire that can't come back.</div>
+        <div style="margin-top: 24px; font-family: var(--font-mono); font-size: 24px; color: rgba(247,245,238,0.6); letter-spacing: 0.08em;">SOURCE: FBI INTERNET CRIME COMPLAINT CENTER · IC3 2024 REPORT</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">25 / 34</div>
+</section>
+
+<!-- 26. REAL SCAM CASE 3 -->
+<section data-label="26 Real scam 3">
+  <div class="frame">
+    <div class="eyebrow">Case file · 03</div>
+    <h2 class="slide-title" style="margin-top: 14px; font-size: 60px;">Vendor renewal invoice spoof.</h2>
+    <div class="split" style="margin-top: 28px; gap: 48px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="col" style="gap: 16px;">
+        <div class="email-mock">
+          <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Email 1 of 2</span></div>
+          <div class="em-subject">Renewal invoice — payment due in 3 days</div>
+          <div class="em-meta">
+            From: "Practice Software Renewals" &lt;billing.renewals@gmail.com&gt;<br/>
+            Attachment: 📎 INV-2026-04451.pdf
+          </div>
+          <div class="em-body" style="font-size: 24px;">Your annual practice software license expires this Friday. Pay via the attached invoice to avoid service interruption.</div>
+        </div>
+        <div class="email-mock">
+          <div class="em-header"><div class="em-traffic"><span></span><span></span><span></span></div><span>Email 2 of 2</span></div>
+          <div class="em-subject">Welcome aboard — quick admin update</div>
+          <div class="em-meta">
+            From: "Tech Onboarding" &lt;onboarding@office365-admin.net&gt;<br/>
+            To: new hire · Wed 9:08 AM
+          </div>
+          <div class="em-body" style="font-size: 24px;">Hi! Welcome to the team. Please verify your account by signing in via the link below so we can finish setup.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 18px;">
+        <div class="tile" style="background: var(--paper-2);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">REPORTED TO PACT-ONE</div>
+          <div style="font-size: 24px; margin-top: 8px; font-weight: 500;">Two separate emails, same week. Both flagged by staff.</div>
+        </div>
+        <div class="card" style="padding: 24px 28px;">
+          <div style="font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.08em; color: var(--muted);">RED FLAGS</div>
+          <ul class="flag-list" style="margin-top: 12px; gap: 12px;">
+            <li><span class="flag-marker">🚩</span><span><strong>Email 1:</strong> Legit businesses don't send renewal notices from <code style="font-family: var(--font-mono); background:#fbe9e6; padding: 2px 6px; border-radius: 3px;">@gmail.com</code></span></li>
+            <li><span class="flag-marker">🚩</span><span><strong>Email 2:</strong> Targeting a brand-new employee who doesn't yet know your real onboarding flow</span></li>
+          </ul>
+        </div>
+        <div class="tile" style="background: #e8f1de; border-left: 4px solid var(--safe);">
+          <div style="font-size: 24px;"><strong>NOC actions:</strong> verified both as spam, blocked the senders indefinitely, notified the client.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">26 / 34</div>
+</section>
+
+<!-- 27. OTHER TACTIC: DATA MINING -->
+<section data-label="27 Data mining">
+  <div class="frame">
+    <div class="eyebrow">07 · Other phishy tactics</div>
+    <div class="row" style="margin-top: 16px; align-items: center; gap: 24px;">
+      <h2 class="slide-title">Data mining.</h2>
+      <span class="pill pill-gold" style="font-size: 24px;">01 of 03</span>
+    </div>
+    <div class="split" style="margin-top: 48px; gap: 64px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 32px;">Pulling valuable information out of public datasets — Facebook, Instagram, LinkedIn, Google reviews — and using it to build a believable lie.</div>
+        <div class="tile">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">WHAT IT LOOKS LIKE</div>
+          <div style="font-size: 26px; margin-top: 8px;">An attacker who knows your office manager's name, your hygienist's first day, and your practice's anniversary — because you posted it.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 22px;">
+        <div class="card" style="padding: 32px;">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--muted); letter-spacing: 0.08em;">SOURCES THEY MINE</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-top: 18px; font-size: 24px;">
+            <div>· LinkedIn job posts</div>
+            <div>· Practice website bios</div>
+            <div>· Google reviews</div>
+            <div>· Facebook events</div>
+            <div>· Instagram tagged photos</div>
+            <div>· "Welcome Dr. X" posts</div>
+          </div>
+        </div>
+        <div class="tile" style="background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-size: 24px;"><strong>Defense:</strong> Audit what your practice posts publicly. The less attackers know, the harder it is to be specific.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">27 / 34</div>
+</section>
+
+<!-- 28. SOCIAL ENGINEERING -->
+<section data-label="28 Social engineering">
+  <div class="frame">
+    <div class="eyebrow">07 · Other phishy tactics</div>
+    <div class="row" style="margin-top: 16px; align-items: center; gap: 24px;">
+      <h2 class="slide-title">Social engineering.</h2>
+      <span class="pill pill-gold" style="font-size: 24px;">02 of 03</span>
+    </div>
+    <div class="split" style="margin-top: 48px; gap: 64px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="col" style="gap: 22px;">
+        <div class="body-text" style="font-size: 32px;">Tactics designed to earn your trust so you lower your guard — then hand over information that should never leave the office.</div>
+        <div class="tile" style="background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+          <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">DEFENSE</div>
+          <div style="font-size: 24px; margin-top: 8px;">Verify roles in person. IT won't ever ask for your password. Doctors don't grant server access by hallway conversation.</div>
+        </div>
+      </div>
+      <div class="col" style="gap: 18px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--muted); letter-spacing: 0.08em;">REAL THINGS PEOPLE HAVE SAID:</div>
+        <div class="card" style="padding: 28px; font-size: 26px; line-height: 1.4; font-style: italic;">"I'm from IT. I need your login to fix a quick problem before Dr. Lewis sees it."</div>
+        <div class="card" style="padding: 28px; font-size: 26px; line-height: 1.4; font-style: italic;">"The doctor said I could access the server while she's at lunch. Just need the password."</div>
+        <div class="card" style="padding: 28px; font-size: 26px; line-height: 1.4; font-style: italic;">"This is the new auditor — I just need patient records emailed to this address by EOD."</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">28 / 34</div>
+</section>
+
+<!-- 29. VISHING & SMISHING -->
+<section data-label="29 Vishing and smishing">
+  <div class="frame">
+    <div class="eyebrow">07 · Other phishy tactics</div>
+    <div class="row" style="margin-top: 16px; align-items: center; gap: 24px;">
+      <h2 class="slide-title">Vishing &amp; smishing.</h2>
+      <span class="pill pill-gold" style="font-size: 24px;">03 of 03</span>
+    </div>
+    <div class="split" style="margin-top: 48px; gap: 56px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="card" style="padding: 36px;">
+        <div style="display:flex; align-items: center; gap: 16px;">
+          <span class="pill pill-ink" style="font-size: 24px;">VISHING</span>
+          <span class="small-text">Voice phishing</span>
+        </div>
+        <div style="font-size: 32px; font-weight: 600; margin-top: 16px;">The phone call you didn't expect.</div>
+        <ul class="check-list" style="margin-top: 18px;">
+          <li>"IRS" demanding back taxes by gift card</li>
+          <li>"Bank fraud team" walking you through a transfer</li>
+          <li>AI-generated executive voice asking for an urgent wire</li>
+          <li>Fake award notifications wanting your info to "send a prize"</li>
+        </ul>
+      </div>
+      <div class="card" style="padding: 36px;">
+        <div style="display:flex; align-items: center; gap: 16px;">
+          <span class="pill pill-ink" style="font-size: 24px;">SMISHING</span>
+          <span class="small-text">SMS / text phishing</span>
+        </div>
+        <div style="font-size: 32px; font-weight: 600; margin-top: 16px;">The text from "USPS" you weren't waiting on.</div>
+        <ul class="check-list" style="margin-top: 18px;">
+          <li>USPS / Amazon delivery scams</li>
+          <li>Bank fraud alerts with a link</li>
+          <li>Tech support "log in to fix it"</li>
+          <li>Job offer / DMV / toll-fee scams</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tile" style="margin-top: 24px; background: rgba(222,172,39,0.12); border-left: 4px solid var(--gold);">
+      <div style="font-size: 24px;"><strong>Pattern recognition:</strong> urgency + authority + unknown sender = stop. Call the supposed party through a known number.</div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">29 / 34</div>
+</section>
+
+<!-- 30. CYBER HYGIENE -->
+<section data-label="30 Cyber hygiene">
+  <div class="frame">
+    <div class="eyebrow">08 · Daily habits</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Cyber hygiene = a clean click culture.</h2>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1; min-height: 0;">
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">01</div>
+        <div style="font-size: 28px; font-weight: 600;">Unique passwords + password manager.</div>
+        <div class="small-text">One leak shouldn't compromise everything.</div>
+      </div>
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">02</div>
+        <div style="font-size: 28px; font-weight: 600;">Enable MFA on everything.</div>
+        <div class="small-text">Stolen password ≠ stolen account.</div>
+      </div>
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">03</div>
+        <div style="font-size: 28px; font-weight: 600;">Lock screens when away.</div>
+        <div class="small-text">Win + L. Cmd + Ctrl + Q. Reflex it.</div>
+      </div>
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">04</div>
+        <div style="font-size: 28px; font-weight: 600;">Don't reuse personal credentials at work.</div>
+        <div class="small-text">Or work credentials anywhere personal.</div>
+      </div>
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">05</div>
+        <div style="font-size: 28px; font-weight: 600;">Only download from verified sources.</div>
+        <div class="small-text">Bookmarks, vendor portals — not search ads.</div>
+      </div>
+      <div class="tile" style="display:flex; flex-direction: column; gap: 12px; background: rgba(222,172,39,0.18); border: 1px solid rgba(222,172,39,0.35);">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">06</div>
+        <div style="font-size: 28px; font-weight: 600;">If it seems suspicious, say something.</div>
+        <div class="small-text">Better to flag five non-issues than miss one real one.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">30 / 34</div>
+</section>
+
+<!-- 31. CULTURE -->
+<section data-label="31 Security first culture" class="slide-dark">
+  <div class="frame">
+    <div class="eyebrow">09 · Team culture</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Cybersecurity is a <span style="color: var(--gold);">team sport.</span></h2>
+    <p class="body-text" style="font-size: 30px; max-width: 1100px; margin-top: 22px; color: var(--paper-2);">Tools catch a lot. Culture catches the rest. Four ways to keep cyber top-of-mind in the office:</p>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; flex: 1; min-height: 0;">
+      <div class="tile" style="background: rgba(247,245,238,0.06); padding: 36px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">A</div>
+        <div style="font-size: 32px; font-weight: 600; color: var(--paper); margin-top: 10px;">Non-judgmental reporting.</div>
+        <div class="body-text" style="color: var(--paper-2); margin-top: 10px;">Mistakes get reported faster when nobody gets in trouble for the report.</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); padding: 36px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">B</div>
+        <div style="font-size: 32px; font-weight: 600; color: var(--paper); margin-top: 10px;">Share stories at team huddles.</div>
+        <div class="body-text" style="color: var(--paper-2); margin-top: 10px;">Two minutes a week. "Here's what I almost clicked on Tuesday."</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); padding: 36px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">C</div>
+        <div style="font-size: 32px; font-weight: 600; color: var(--paper); margin-top: 10px;">Celebrate "caught a phish" moments.</div>
+        <div class="body-text" style="color: var(--paper-2); margin-top: 10px;">Coffee. Shout-outs. Make catching feel like winning.</div>
+      </div>
+      <div class="tile" style="background: rgba(247,245,238,0.06); padding: 36px;">
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">D</div>
+        <div style="font-size: 32px; font-weight: 600; color: var(--paper); margin-top: 10px;">Keep training fun, short, relevant.</div>
+        <div class="body-text" style="color: var(--paper-2); margin-top: 10px;">Like this one. Boring training is forgotten training.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">31 / 34</div>
+</section>
+
+<!-- 32. KEY TAKEAWAYS -->
+<section data-label="32 Key takeaways and cheat sheet">
+  <div class="frame">
+    <div class="eyebrow">10 · Wrap-up</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Key takeaways.</h2>
+    <div class="split" style="margin-top: 44px; gap: 60px; flex: 1; min-height: 0; grid-template-columns: 1.3fr 1fr;">
+      <div class="col" style="gap: 18px;">
+        <ul class="numbered-list">
+          <li><span class="num">01</span><span><strong>Think before you click.</strong> Two seconds breaks the autopilot.</span></li>
+          <li><span class="num">02</span><span><strong>Phishing is sneaky but beatable.</strong> Pattern + practice = recognition.</span></li>
+          <li><span class="num">03</span><span><strong>Training + awareness = your superpower.</strong> That's literally why we're here.</span></li>
+          <li><span class="num">04</span><span><strong>Keep the cheat sheet handy.</strong> Post it at the front desk. We made it portable.</span></li>
+          <li><span class="num">05</span><span><strong>When in doubt, reach out to Pact-One.</strong> No question is too small.</span></li>
+        </ul>
+      </div>
+      <div class="qr-card" style="align-self: stretch;">
+        <div class="qrbox" id="cheat-qr"><div style="font-family: var(--font-mono); color: var(--muted); font-size: 24px; padding: 12px; text-align: center;">QR renders on load</div></div>
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">CHEAT SHEET + RESOURCES</div>
+        <div class="url" style="font-size: 24px;">pact-one.com/becoming-a-cyber-sleuth</div>
+      </div>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">32 / 34</div>
+</section>
+
+<!-- 33. Q&A -->
+<section data-label="33 Q and A" class="slide-gold">
+  <div class="frame" style="justify-content: center; align-items: center;">
+    <div class="eyebrow" style="text-align: center;">Floor's open</div>
+    <h2 class="slide-title" style="margin-top: 24px; font-size: 220px; line-height: 0.95; color: var(--gold); text-align: center;">Q &amp; A.</h2>
+    <p class="slide-sub" style="margin-top: 32px; text-align: center; max-width: 1300px; color: var(--paper);">Questions? Stories of phishing attempts you've seen lately? Anything weird your gut said no to?</p>
+  </div>
+  <div class="brand-bar" style="opacity: 0.5;"></div>
+  <div class="brand-mark"><img src="assets/pact-one-mark.png" alt="" /> <span>Pact-One</span></div>
+  <div class="page-num">33 / 34</div>
+</section>
+
+<!-- 34. THANK YOU / REVIEW -->
+<section data-label="34 Thank you and review">
+  <div class="frame">
+    <div class="eyebrow">Thank you</div>
+    <h2 class="slide-title" style="margin-top: 18px;">Tell us how we did.</h2>
+    <div class="split" style="margin-top: 48px; gap: 60px; flex: 1; min-height: 0; grid-template-columns: 1fr 1fr;">
+      <div class="card" style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+        <div class="qrbox" id="review-qr" style="width: 280px; height: 280px; background: var(--paper-2); display: grid; place-items: center; border-radius: 8px;"><div style="font-family: var(--font-mono); color: var(--muted); font-size: 24px;">QR</div></div>
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">REVIEW THE SESSION</div>
+        <div style="font-size: 24px; text-align: center; max-width: 380px;">Scan to leave a quick rating. 60 seconds.</div>
+      </div>
+      <div class="card" style="padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+        <div class="qrbox" id="refer-qr" style="width: 280px; height: 280px; background: var(--paper-2); display: grid; place-items: center; border-radius: 8px;"><div style="font-family: var(--font-mono); color: var(--muted); font-size: 24px;">QR</div></div>
+        <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold-deep); letter-spacing: 0.08em;">SHARE THE SESSION</div>
+        <div style="font-size: 24px; text-align: center; max-width: 380px;">Know another dental practice that would benefit? We'd be honored by the referral.</div>
+      </div>
+    </div>
+    <div style="margin-top: 32px; display:flex; align-items: center; gap: 18px; justify-content: center;">
+      <img src="assets/pact-one-mark.png" alt="" style="height: 48px; width: 48px;"/>
+      <div style="font-family: var(--font-display); font-size: 36px; font-weight: 600;">Pact-One</div>
+      <span style="color: var(--muted); font-size: 24px;">· Dental IT, Be Worry-Free</span>
+    </div>
+  </div>
+  <div class="brand-bar"></div>
+  <div class="page-num">34 / 34</div>
+</section>
+
+</deck-stage>
+
+<!-- Libraries -->
+<script src="deck-stage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="live.js"></script>
+<!-- QR codes rendered via api.qrserver.com -->
+
+<!-- React for tweaks panel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script src="deck-logic.js"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
+</body>
+</html>
