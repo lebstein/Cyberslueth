@@ -224,15 +224,26 @@
   }
 
   // ---- Click-to-reveal steps ----
+  // deck-stage's tapzones/keyboard sit above the slide, so section clicks never
+  // land. Instead we intercept the stage's forward-advance: while the current
+  // slide has unrevealed steps, forward (click/tap/→/space) reveals the next
+  // step; only after all are shown does it change slides. Back always navigates.
   function setupReveal(section) {
     if (!section || !section.hasAttribute('data-click-reveal')) return;
-    const steps = Array.from(section.querySelectorAll('.reveal-step'));
-    steps.forEach(s => s.classList.remove('shown'));
-    let shown = 0;
-    const advance = () => {
-      if (shown < steps.length) { steps[shown].classList.add('shown'); shown += 1; }
+    section.querySelectorAll('.reveal-step').forEach(s => s.classList.remove('shown'));
+  }
+  function hookRevealAdvance() {
+    const stage = document.querySelector('deck-stage');
+    if (!stage || IS_THUMB || stage._revealHooked) return;
+    stage._revealHooked = true;
+    const orig = stage._advance.bind(stage);
+    stage._advance = function (dir, reason) {
+      if (dir === 1 && currentSection && currentSection.hasAttribute('data-click-reveal')) {
+        const next = currentSection.querySelector('.reveal-step:not(.shown)');
+        if (next) { next.classList.add('shown'); return; }
+      }
+      orig(dir, reason);
     };
-    section.onclick = advance;
   }
 
   // ---- Slide-change hook ----
@@ -305,6 +316,7 @@
     });
     renderQRCodes();
     offlineBadge();
+    hookRevealAdvance();
     if (!IS_THUMB) subscribe();
     renderPlayerCount();
     const stage = document.querySelector('deck-stage');
