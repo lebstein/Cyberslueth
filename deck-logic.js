@@ -223,6 +223,18 @@
     });
   }
 
+  // ---- Click-to-reveal steps ----
+  function setupReveal(section) {
+    if (!section || !section.hasAttribute('data-click-reveal')) return;
+    const steps = Array.from(section.querySelectorAll('.reveal-step'));
+    steps.forEach(s => s.classList.remove('shown'));
+    let shown = 0;
+    const advance = () => {
+      if (shown < steps.length) { steps[shown].classList.add('shown'); shown += 1; }
+    };
+    section.onclick = advance;
+  }
+
   // ---- Slide-change hook ----
   let currentSection = null;
   function onSlideChange(idx) {
@@ -230,6 +242,7 @@
     const section = getSlideSections()[idx];
     if (!section) return;
     currentSection = section;
+    setupReveal(section);
     const label = section.getAttribute('data-label') || '';
     const qNum = section.getAttribute('data-quiz');
     const rNum = section.getAttribute('data-reveal');

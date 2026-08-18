@@ -170,6 +170,16 @@
           <span class="pill pill-gold" style="font-size: 24px;">Live leaderboard</span>
           <span class="pill pill-teal" style="font-size: 24px;"><span data-player-count>0</span>&nbsp;sleuths joined</span>
         </div>
+        <div style="display:flex; align-items:center; gap: 24px; margin-top: 8px;">
+          <div class="timer-ring" data-timer="60" style="width: 140px; height: 140px;">
+            <svg width="140" height="140" viewBox="0 0 180 180">
+              <circle class="track" cx="90" cy="90" r="80" stroke-width="10" fill="none"></circle>
+              <circle class="fill" cx="90" cy="90" r="80" stroke-width="10" fill="none" stroke-dasharray="502.65" stroke-dashoffset="0"></circle>
+            </svg>
+            <div class="digit">60</div>
+          </div>
+          <div class="small-text">60 seconds to join — then we start.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -531,7 +541,7 @@
           <div style="display:flex; gap: 18px; align-items: flex-start;">
             <div class="pill" style="background: var(--gold-soft); color: var(--gold-deep); font-size: 24px; padding: 4px 12px;">A</div>
             <div>
-              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--safe);">https://www.opendental.com › login</div>
+              <div style="font-family: var(--font-mono); font-size: 24px; color: var(--ink-2);">https://www.opendental.com › login</div>
               <div style="font-size: 26px; font-weight: 600; color: var(--line-blue); margin-top: 4px;">Open Dental — Practice Management Login</div>
               <div style="font-size: 24px; color: var(--muted); margin-top: 6px;">Sign in to your Open Dental account. Trusted by 80,000+ dental professionals…</div>
             </div>
@@ -797,33 +807,33 @@
 </section>
 
 <!-- 20. SUPER SLEUTH BEST PRACTICES -->
-<section data-label="20 Super sleuth best practices" class="slide-dark">
+<section data-label="20 Super sleuth best practices" class="slide-dark" data-click-reveal>
   <div class="frame">
     <div class="eyebrow">05 · The playbook</div>
     <h2 class="slide-title" style="margin-top: 18px;">How to be a <span style="color: var(--gold);">super cyber sleuth</span>.</h2>
     <p class="body-text" style="font-size: 30px; max-width: 1200px; margin-top: 22px; color: var(--paper-2);">Ditch the magnifying glass. Five habits. That's the whole job.</p>
     <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; flex: 1; min-height: 0;">
-      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+      <div class="tile reveal-step" data-step="1" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
         <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">01</div>
         <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Pause<br/>before you click.</div>
         <div class="small-text" style="color: var(--paper-2);">Two seconds breaks the autopilot.</div>
       </div>
-      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+      <div class="tile reveal-step" data-step="2" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
         <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">02</div>
         <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Hover<br/>to inspect.</div>
         <div class="small-text" style="color: var(--paper-2);">Read the real URL before you trust the link text.</div>
       </div>
-      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+      <div class="tile reveal-step" data-step="3" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
         <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">03</div>
         <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Verify<br/>the source.</div>
         <div class="small-text" style="color: var(--paper-2);">Call direct. Walk down the hall. Don't just reply.</div>
       </div>
-      <div class="tile" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
+      <div class="tile reveal-step" data-step="4" style="background: rgba(247,245,238,0.06); display:flex; flex-direction: column; gap: 16px;">
         <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">04</div>
         <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Slow down<br/>when rushed.</div>
         <div class="small-text" style="color: var(--paper-2);">Urgency is the attacker's #1 tool. Take it back.</div>
       </div>
-      <div class="tile" style="background: rgba(222,172,39,0.18); display:flex; flex-direction: column; gap: 16px; border: 1px solid rgba(222,172,39,0.4);">
+      <div class="tile reveal-step" data-step="5" style="background: rgba(222,172,39,0.18); display:flex; flex-direction: column; gap: 16px; border: 1px solid rgba(222,172,39,0.4);">
         <div style="font-family: var(--font-mono); font-size: 24px; color: var(--gold); letter-spacing: 0.08em;">05</div>
         <div style="font-size: 28px; font-weight: 600; color: var(--paper); line-height: 1.15;">Trust<br/>your instincts.</div>
         <div class="small-text" style="color: var(--paper-2);">If it feels off, it probably is. Say something.</div>
