@@ -163,20 +163,28 @@
   }
 
   // ---- Leaderboard from real answers ----
+  // Kahoot-style speed scoring: a correct answer earns 500–1000 points,
+  // scaled linearly by how much of the timer was left when it was entered.
+  function pointsFor(ans, duration) {
+    const dur = (duration || 30) * 1000;
+    const frac = Math.min(Math.max((ans.ms || 0) / dur, 0), 1);
+    return Math.round(1000 - 500 * frac);
+  }
   function computeScores() {
-    const scores = {}; // pid -> {name, score, ms}
-    for (const pid in players) scores[pid] = { name: players[pid].name || 'Sleuth', score: 0, ms: 0 };
+    const dur = window.CYBER_TWEAKS.timerSeconds || 30;
+    const scores = {}; // pid -> {name, pts, correct}
+    for (const pid in players) scores[pid] = { name: players[pid].name || 'Sleuth', pts: 0, correct: 0 };
     for (let q = 1; q <= 6; q++) {
       const set = answers['q' + q] || {};
       for (const pid in set) {
-        if (!scores[pid]) scores[pid] = { name: 'Sleuth', score: 0, ms: 0 };
+        if (!scores[pid]) scores[pid] = { name: 'Sleuth', pts: 0, correct: 0 };
         if (set[pid].letter === CORRECT[q]) {
-          scores[pid].score += 1;
-          scores[pid].ms += set[pid].ms || 0;
+          scores[pid].correct += 1;
+          scores[pid].pts += pointsFor(set[pid], dur);
         }
       }
     }
-    return Object.values(scores).sort((a, b) => b.score - a.score || a.ms - b.ms);
+    return Object.values(scores).sort((a, b) => b.pts - a.pts || b.correct - a.correct);
   }
 
   function renderLeaderboard() {
@@ -189,7 +197,7 @@
       const p = ranked[r - 1];
       if (!steps[r]) continue;
       steps[r].querySelector('[data-name]').textContent = p ? p.name : '—';
-      steps[r].querySelector('[data-pts]').textContent = (p ? p.score : 0) + ' / 6';
+      steps[r].querySelector('[data-pts]').textContent = (p ? p.pts.toLocaleString() : 0) + ' pts';
     }
     let totalCorrect = 0, answered = 0;
     for (let q = 1; q <= 6; q++) {
@@ -209,7 +217,7 @@
     const out = renderLeaderboard();
     if (!out) return;
     live.ref(SESSION, 'results').set({
-      podium: out.ranked.slice(0, 3).map(p => ({ name: p.name, score: p.score })),
+      podium: out.ranked.slice(0, 3).map(p => ({ name: p.name, pts: p.pts, correct: p.correct })),
       avg: out.avg,
       players: playerCount()
     });

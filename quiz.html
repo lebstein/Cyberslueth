@@ -142,10 +142,20 @@ function topBar(pill){
 }
 function clearTimer(){ if (timerInterval){ clearInterval(timerInterval); timerInterval = null; } }
 
+function pointsFor(a, durSec){
+  const dur = (durSec || 30) * 1000;
+  const frac = Math.min(Math.max((a.ms || 0) / dur, 0), 1);
+  return Math.round(1000 - 500 * frac);
+}
 function myScore(){
   let s = 0;
   QUESTIONS.forEach(q => { const a = local.answers[q.n]; if (a && a.letter === q.correct) s += 1; });
   return s;
+}
+function myPoints(){
+  let p = 0;
+  QUESTIONS.forEach(q => { const a = local.answers[q.n]; if (a && a.letter === q.correct) p += pointsFor(a, a.dur); });
+  return p;
 }
 
 // ---- Screens ----
@@ -229,7 +239,7 @@ function renderQuestion(){
     opts.forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
     const letter = btn.getAttribute('data-letter');
-    local.answers[q.n] = { letter: letter, ms: Date.now() - questionStart };
+    local.answers[q.n] = { letter: letter, ms: Date.now() - questionStart, dur: remote.duration || 30 };
     save();
     live.ref(local.session, 'answers/q' + q.n + '/' + local.pid).set({ letter: letter, ms: Date.now() - questionStart });
     document.getElementById('hint').textContent = 'Locked in: ' + letter + ' — you can change it until time runs out.';
@@ -278,7 +288,7 @@ function renderReveal(){
       </div>
       <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
         <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;color:rgba(247,245,238,0.7);">YOUR SCORE</div>
-        <div style="font-size:26px;font-weight:700;color:var(--gold);">${myScore()} / 6</div>
+        <div style="text-align:right;"><div style="font-size:26px;font-weight:700;color:var(--gold);">${myPoints().toLocaleString()} pts</div><div style="font-size:12px;color:rgba(247,245,238,0.6);">${myScore()} / 6 correct · faster answers score higher</div></div>
       </div>
       <p class="muted" style="font-size:12px;text-align:center;">Next question drops from the big screen.</p>
     </div>`;
@@ -296,8 +306,8 @@ function renderFinal(){
     <div class="fade-in" style="display:flex;flex-direction:column;gap:18px;">
       <div class="score-hero">
         <div class="eyebrow">${local.name || 'Sleuth'}</div>
-        <div class="score">${score}</div>
-        <div class="out-of">OUT OF 6</div>
+        <div class="score">${myPoints().toLocaleString()}</div>
+        <div class="out-of">POINTS · ${score} / 6 CORRECT</div>
         <div class="verdict" style="color:${color};">${verdict}</div>
       </div>
       <div class="card" id="podium"><div class="eyebrow" style="margin-bottom:8px;">Top sleuths</div><div class="muted">Waiting for results…</div></div>
@@ -320,7 +330,7 @@ function renderFinal(){
     if (!r || !r.podium || !el) return;
     const medals = ['🥇','🥈','🥉'];
     el.innerHTML = `<div class="eyebrow" style="margin-bottom:8px;">Top sleuths · ${r.players || 0} played · room avg ${r.avg || 0}%</div>` +
-      r.podium.map((p, i) => `<div class="podium-row"><span class="medal">${medals[i]}</span><span class="pname">${String(p.name).replace(/[<>&]/g,'')}</span><span class="pscore">${p.score} / 6</span></div>`).join('');
+      r.podium.map((p, i) => `<div class="podium-row"><span class="medal">${medals[i]}</span><span class="pname">${String(p.name).replace(/[<>&]/g,'')}</span><span class="pscore">${(p.pts != null ? p.pts.toLocaleString() + ' pts' : p.score + ' / 6')}</span></div>`).join('');
   });
 }
 
